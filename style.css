@@ -1,0 +1,256 @@
+/* ============================================ */
+/* GLOBAL STYLES & RESETS                        */
+/* ============================================ */
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    /* Slightly larger base for older user readability */
+    font-size: 16px;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================ */
+/* HERO PATTERN                                  */
+/* ============================================ */
+
+.hero-pattern {
+    background-image: radial-gradient(circle at 25% 25%, rgba(20, 209, 94, 0.1) 0%, transparent 50%),
+                      radial-gradient(circle at 75% 75%, rgba(20, 209, 94, 0.05) 0%, transparent 50%),
+                      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2314d15e' fill-opacity='0.15'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ============================================ */
+/* NAVBAR STYLES                                 */
+/* ============================================ */
+
+#navbar {
+    background: transparent;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#navbar.scrolled {
+    background: rgba(15, 31, 15, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================ */
+/* SCROLL ANIMATIONS                             */
+/* ============================================ */
+
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ============================================ */
+/* FAQ STYLES                                    */
+/* ============================================ */
+
+.faq-item .faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item.active .faq-content {
+    max-height: 500px;
+    display: block;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-item.active {
+    background-color: #effef4;
+    border-color: #b5fdd0;
+}
+
+/* ============================================ */
+/* TESTIMONIAL SCROLLBAR                         */
+/* ============================================ */
+
+.testimonial-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.testimonial-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* ============================================ */
+/* COUNTER ANIMATION                             */
+/* ============================================ */
+
+.counter {
+    display: inline-block;
+}
+
+/* ============================================ */
+/* CUSTOM SELECTION COLOR                        */
+/* ============================================ */
+
+::selection {
+    background: rgba(20, 209, 94, 0.2);
+    color: #0b883d;
+}
+
+/* ============================================ */
+/* WHATSAPP BUTTON PULSE                         */
+/* ============================================ */
+
+#whatsapp-float {
+    animation: wa-pulse 2s ease-in-out infinite;
+}
+
+@keyframes wa-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* ============================================ */
+/* SMOOTH HOVER EFFECTS                          */
+/* ============================================ */
+
+a, button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================ */
+/* RESPONSIVE TYPOGRAPHY                         */
+/* ============================================ */
+
+@media (max-width: 640px) {
+    .font-heading {
+        letter-spacing: -0.02em;
+    }
+}
+
+/* ============================================ */
+/* MOBILE MENU ANIMATION                         */
+/* ============================================ */
+
+#mobile-menu {
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================ */
+/* PRICING CARD GLOW (GOLD)                      */
+/* ============================================ */
+
+.pricing-glow {
+    position: relative;
+}
+
+.pricing-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, #14d15e, #09ad4a, #facf15);
+    border-radius: 1.5rem;
+    z-index: -1;
+    filter: blur(15px);
+    opacity: 0.4;
+    transition: opacity 0.3s;
+}
+
+.pricing-glow:hover::before {
+    opacity: 0.6;
+}
+
+/* ============================================ */
+/* FOCUS STYLES FOR ACCESSIBILITY                */
+/* ============================================ */
+
+*:focus-visible {
+    outline: 2px solid #14d15e;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* ============================================ */
+/* LOADING SKELETON                              */
+/* ============================================ */
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(to right, #f0f0f0 8%, #e0e0e0 18%, #f0f0f0 33%);
+    background-size: 2000px 100%;
+    animation: shimmer 1.5s infinite linear;
+}
+
+/* ============================================ */
+/* PRINT STYLES                                  */
+/* ============================================ */
+
+@media print {
+    #navbar, #whatsapp-float, .animate-on-scroll {
+        display: none !important;
+    }
+    
+    body {
+        color: #000;
+        background: #fff;
+    }
+}
