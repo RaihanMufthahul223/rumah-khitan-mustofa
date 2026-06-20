@@ -109,6 +109,92 @@
 <body class="font-body text-gray-800 bg-white overflow-x-hidden">
 
     <!-- ============================================ -->
+    <!-- BRANCH SELECTION OVERLAY -->
+    <!-- ============================================ -->
+    <!-- ============================================ -->
+    <!-- BRANCH SELECTION OVERLAY -->
+    <!-- ============================================ -->
+    <!-- ============================================ -->
+    <!-- BRANCH SELECTION OVERLAY -->
+    <!-- ============================================ -->
+    <div id="branch-overlay" class="fixed inset-0 z-[100] overflow-y-auto bg-gradient-to-br from-dark-900 via-primary-950 to-dark-800">
+        <div class="min-h-full w-full flex flex-col items-center justify-center p-4 sm:p-6 md:p-8 relative">
+            <!-- Background decorative elements -->
+            <div class="absolute inset-0 hero-pattern opacity-5 pointer-events-none"></div>
+            <div class="absolute top-20 right-10 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl animate-float pointer-events-none"></div>
+            <div class="absolute bottom-20 left-10 w-96 h-96 bg-primary-600/8 rounded-full blur-3xl animate-float pointer-events-none" style="animation-delay: 1.5s"></div>
+            <div class="absolute top-1/3 left-1/4 w-48 h-48 bg-accent-400/5 rounded-full blur-2xl animate-float pointer-events-none" style="animation-delay: 0.8s"></div>
+
+            <div class="relative z-10 max-w-3xl w-full text-center flex flex-col items-stretch py-4">
+                <!-- Logo & Title -->
+                <div class="mb-6 md:mb-10 branch-fade-in" style="animation-delay: 0.1s">
+                    <div class="w-16 h-16 md:w-20 md:h-20 mx-auto rounded-2xl bg-white flex items-center justify-center shadow-2xl shadow-primary-500/20 mb-4 md:mb-6 overflow-hidden p-1">
+                        <img src="logo.png" alt="Logo Rumah Khitan Mustopa" class="w-full h-full object-contain">
+                    </div>
+                    <h1 class="font-heading font-extrabold text-2xl sm:text-4xl md:text-5xl text-white mb-2 md:mb-3 leading-tight">
+                        Rumah Khitan <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-300">Mustopa</span>
+                    </h1>
+                    <p class="text-gray-300 text-sm sm:text-lg md:text-xl max-w-xs sm:max-w-md mx-auto">Pilih cabang terdekat untuk melanjutkan</p>
+                </div>
+
+                <!-- Branch Cards -->
+                <div class="grid sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 max-w-md sm:max-w-none mx-auto w-full">
+                    <!-- Bandung Branch -->
+                    <button id="branch-bandung" class="branch-card branch-fade-in group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden text-left hover:bg-white/10 hover:border-primary-400/40 transition-all duration-500 hover:-translate-y-1 sm:hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary-500/10 cursor-pointer flex flex-col items-stretch" style="animation-delay: 0.3s" onclick="selectBranch('bandung')">
+                        <!-- Glow effect on hover -->
+                        <div class="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-primary-500/0 to-primary-700/0 group-hover:from-primary-500/10 group-hover:to-primary-700/5 transition-all duration-500 z-10"></div>
+                        <!-- Clinic Photo -->
+                        <div class="relative w-full shrink-0 aspect-[21/9] sm:aspect-[16/10] overflow-hidden">
+                            <img src="clinic-bandung.png" alt="Klinik Rumah Khitan Mustopa Bandung" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                        </div>
+                        <div class="relative p-4 sm:p-6 md:p-7 flex flex-col justify-between flex-grow">
+                            <div class="mb-2 sm:mb-4">
+                                <h2 class="font-heading font-bold text-lg sm:text-2xl text-white mb-1 group-hover:text-primary-300 transition-colors">Cabang Bandung</h2>
+                                <p class="text-gray-400 text-xs sm:text-base group-hover:text-gray-300 transition-colors">Bandung Barat, Jawa Barat</p>
+                            </div>
+                            <div class="flex items-center gap-1.5 sm:gap-2 text-primary-400 font-semibold text-xs sm:text-sm group-hover:text-primary-300 transition-colors">
+                                <span>Pilih Cabang Ini</span>
+                                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </button>
+
+                    <!-- Garut Branch -->
+                    <button id="branch-garut" class="branch-card branch-fade-in group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden text-left hover:bg-white/10 hover:border-accent-400/40 transition-all duration-500 hover:-translate-y-1 sm:hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent-500/10 cursor-pointer flex flex-col items-stretch" style="animation-delay: 0.45s" onclick="selectBranch('garut')">
+                        <!-- Glow effect on hover -->
+                        <div class="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-accent-500/0 to-accent-700/0 group-hover:from-accent-500/10 group-hover:to-accent-700/5 transition-all duration-500 z-10"></div>
+                        <!-- Clinic Photo -->
+                        <div class="relative w-full shrink-0 aspect-[21/9] sm:aspect-[16/10] overflow-hidden">
+                            <img src="clinic-garut.png" alt="Klinik Rumah Khitan Mustopa Garut" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                        </div>
+                        <div class="relative p-4 sm:p-6 md:p-7 flex flex-col justify-between flex-grow">
+                            <div class="mb-2 sm:mb-4">
+                                <h2 class="font-heading font-bold text-lg sm:text-2xl text-white mb-1 group-hover:text-accent-300 transition-colors">Cabang Garut</h2>
+                                <p class="text-gray-400 text-xs sm:text-base group-hover:text-gray-300 transition-colors">Garut, Jawa Barat</p>
+                            </div>
+                            <div class="flex items-center gap-1.5 sm:gap-2 text-accent-400 font-semibold text-xs sm:text-sm group-hover:text-accent-300 transition-colors">
+                                <span>Pilih Cabang Ini</span>
+                                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+
+                <!-- Footer note -->
+                <p class="mt-6 md:mt-10 text-gray-500 text-sm branch-fade-in" style="animation-delay: 0.6s">
+                    ⭐ Rating 5.0 — 258+ Review Google
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
     <!-- FLOATING WHATSAPP BUTTON -->
     <!-- ============================================ -->
     <!-- WhatsApp Float - ENLARGED for older users -->
@@ -133,11 +219,11 @@
                 <!-- Logo -->
                 <a href="#" class="flex items-center gap-2 group" id="nav-logo">
                     <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white flex items-center justify-center shadow-lg group-hover:shadow-primary-500/30 transition-all duration-300 overflow-hidden p-0.5">
-                        <img src="logo.png" alt="Logo Rumah Khitan Mustopa" class="w-full h-full object-contain">
+                        <img src="logo.png" alt="Logo Rumah Khitan Kak Topa" class="w-full h-full object-contain">
                     </div>
                     <div class="hidden sm:block">
                         <p class="font-heading font-bold text-lg leading-tight text-white group-hover:text-primary-300 transition-colors">Rumah Khitan</p>
-                        <p class="font-heading text-xs font-medium text-primary-300/80">Mustopa</p>
+                        <p class="font-heading text-xs font-medium text-primary-300/80">Kak Topa</p>
                     </div>
                 </a>
 
@@ -149,9 +235,14 @@
                     <a href="#testimoni" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-white/90 hover:text-white hover:bg-white/10 transition-all duration-300">Testimoni</a>
                     <a href="#faq" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-white/90 hover:text-white hover:bg-white/10 transition-all duration-300">FAQ</a>
                     <a href="#kontak" class="nav-link px-4 py-2 rounded-lg text-sm font-medium text-white/90 hover:text-white hover:bg-white/10 transition-all duration-300">Kontak</a>
-                    <a href="https://wa.me/6282213085278?text=Halo%20Rumah%20Khitan%20Mustopa%2C%20saya%20ingin%20daftar%20khitan" 
+                    <!-- Branch Switcher -->
+                    <button onclick="switchBranch()" class="ml-2 px-3 py-1.5 bg-white/10 backdrop-blur-sm border border-white/15 rounded-lg text-xs font-medium text-white/80 hover:text-white hover:bg-white/20 transition-all duration-300 flex items-center gap-1.5" title="Ganti Cabang">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/></svg>
+                        <span id="branch-label-desktop" class="hidden lg:inline">Cabang</span>
+                    </button>
+                    <a href="https://wa.me/6282213085278?text=Halo%20Rumah%20Khitan%20Kak Topa%2C%20saya%20ingin%20daftar%20khitan" 
                        target="_blank"
-                       class="ml-3 px-5 py-2.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-sm font-semibold rounded-xl hover:from-primary-600 hover:to-primary-700 transition-all duration-300 shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 hover:-translate-y-0.5">
+                       class="ml-2 px-5 py-2.5 bg-gradient-to-r from-primary-500 to-primary-600 text-white text-sm font-semibold rounded-xl hover:from-primary-600 hover:to-primary-700 transition-all duration-300 shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 hover:-translate-y-0.5">
                         Daftar Sekarang
                     </a>
                 </div>
@@ -170,8 +261,16 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-dark-900/98 backdrop-blur-xl border-t border-white/10">
+        <div id="mobile-menu" class="md:hidden hidden bg-dark-900/98 backdrop-blur-xl border-t border-white/10 max-h-[calc(100vh-4.5rem)] overflow-y-auto">
             <div class="px-4 py-6 space-y-2">
+                <!-- Branch Switcher Mobile -->
+                <button onclick="switchBranch()" class="w-full flex items-center justify-between px-5 py-4 rounded-xl text-lg font-semibold text-accent-300 bg-accent-500/10 hover:bg-accent-500/20 transition-all border border-accent-500/20 mb-2">
+                    <span class="flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"/></svg>
+                        <span id="branch-label-mobile">Ganti Cabang</span>
+                    </span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+                </button>
                 <a href="#beranda" class="mobile-nav-link block px-5 py-4 rounded-xl text-lg font-semibold text-white hover:bg-white/10 transition-all border-b border-white/5">🏠 Beranda</a>
                 <a href="#metode" class="mobile-nav-link block px-5 py-4 rounded-xl text-lg font-semibold text-white hover:bg-white/10 transition-all border-b border-white/5">🔬 Metode Sunat</a>
                 <a href="#harga" class="mobile-nav-link block px-5 py-4 rounded-xl text-lg font-semibold text-white hover:bg-white/10 transition-all border-b border-white/5">💰 Harga & Paket</a>
@@ -182,7 +281,7 @@
                 <!-- Nomor Telepon - langsung terlihat di mobile menu -->
                 <a href="tel:+6282213085278" 
                    class="block mt-3 px-5 py-4 bg-white/10 text-white text-lg font-bold rounded-xl text-center border border-white/20">
-                    📞 Telepon: 0857-2239-9498
+                    📞 Telepon: 0822-1308-5278
                 </a>
                 <a href="https://wa.me/6282213085278?text=Halo%20Rumah%20Khitan%20Mustopa%2C%20saya%20ingin%20daftar%20khitan" 
                    target="_blank"
@@ -217,9 +316,9 @@
                     </div>
 
                     <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight">
-                        <span class="text-white">JAGOAN</span><br>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-300">Gak Takut</span><br>
-                        <span class="text-white">diSunat</span>
+                        <span class="text-white">Khitan</span><br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-300">Private</span><br>
+                        <span class="text-white">Anti Ribet</span>
                     </h1>
 
                     <p class="text-xl md:text-2xl text-gray-200 max-w-lg mx-auto lg:mx-0 leading-relaxed">
@@ -237,7 +336,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"/>
                             </svg>
                         </a>
-                        <a href="https://wa.me/6282213085278?text=Halo%20Rumah%20Khitan%20Mustopa%2C%20saya%20ingin%20konsultasi" 
+                        <a href="https://wa.me/6282213085278?text=Halo%20Rumah%20Khitan%20Kak Topa%2C%20saya%20ingin%20konsultasi" 
                            target="_blank"
                            id="hero-cta-wa"
                            class="group px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-bold rounded-2xl text-lg hover:bg-white/20 transition-all duration-300 hover:-translate-y-1 flex items-center justify-center gap-3">
@@ -329,15 +428,12 @@
                 <!-- Left: Image/Visual -->
                 <div class="animate-on-scroll relative">
                     <div class="relative rounded-3xl overflow-hidden shadow-2xl">
-                        <div class="aspect-[4/3] bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center">
-                            <div class="text-center space-y-4 p-8">
-                                <div class="w-24 h-24 mx-auto bg-gradient-to-br from-primary-500 to-primary-700 rounded-3xl flex items-center justify-center shadow-xl">
-                                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3H21m-3.75 3H21"/>
-                                    </svg>
-                                </div>
-                                <h3 class="font-heading font-bold text-2xl text-primary-900">Rumah Khitan Mustopa</h3>
-                                <p class="text-primary-700 text-base">Klinik Khitan Modern di Bandung Barat</p>
+                        <div class="aspect-[4/3] bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden relative">
+                            <img id="about-clinic-img" src="clinic-bandung.png" alt="Klinik Rumah Khitan Mustopa Bandung" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 text-white text-left">
+                                <h3 class="font-heading font-bold text-2xl text-white drop-shadow-md">Rumah Khitan Mustopa</h3>
+                                <p class="text-gray-250 text-sm sm:text-base drop-shadow-md" data-branch-text="clinic-location">Klinik Khitan Modern di Bandung Barat</p>
                             </div>
                         </div>
                         <!-- Floating stat card -->
@@ -363,7 +459,7 @@
                         <span class="inline-block px-5 py-2 bg-primary-50 text-primary-700 text-base font-semibold rounded-full">Tentang Kami</span>
                     </div>
                     <h2 class="font-heading font-bold text-3xl md:text-4xl text-gray-900 leading-tight">
-                        KakTOPA Selalu Memberi <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-500">SOLUSI</span>
+                        Kak TOPA Selalu Memberi <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-500">SOLUSI</span>
                     </h2>
                     <p class="text-gray-700 text-lg md:text-xl leading-relaxed">
                         Layanan Sunat Modern dengan Biaya yang Variatif. Dukungan tenaga medis yang berpengalaman dengan 
@@ -431,9 +527,9 @@
             </div>
 
             <!-- Methods Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            <div class="flex flex-wrap justify-center gap-6 lg:gap-8 max-w-5xl mx-auto">
                 <!-- Method 1: ThermoCauter -->
-                <div class="animate-on-scroll bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl border border-gray-100 hover:border-primary-200 transition-all duration-500 group hover:-translate-y-2">
+                <div class="animate-on-scroll bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl border border-gray-100 hover:border-primary-200 transition-all duration-500 group hover:-translate-y-2 w-full md:w-[calc(50%-12px)] lg:w-[calc(50%-16px)] flex flex-col">
                     <div class="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-primary-500/20 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/>
@@ -441,40 +537,25 @@
                     </div>
                     <h3 class="font-heading font-bold text-xl text-gray-900 mb-3">ThermoCauter Estetik</h3>
                     <p class="text-gray-700 text-base leading-relaxed mb-4">Metode modern menggunakan panas terkontrol. Proses cepat, minim pendarahan, dan hasil estetik rapi.</p>
-                    <div class="flex items-center gap-2 text-primary-700 font-semibold text-base">
+                    <div class="flex items-center gap-2 text-primary-700 font-semibold text-base mt-auto">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                         <span>Cocok untuk anak-anak</span>
                     </div>
                 </div>
 
                 <!-- Method 2: Combo Sealer -->
-                <div class="animate-on-scroll bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl border border-gray-100 hover:border-primary-200 transition-all duration-500 group hover:-translate-y-2 relative" style="animation-delay: 0.15s">
+                <div class="animate-on-scroll bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl border border-gray-100 hover:border-primary-200 transition-all duration-500 group hover:-translate-y-2 relative w-full md:w-[calc(50%-12px)] lg:w-[calc(50%-16px)] flex flex-col" style="animation-delay: 0.15s">
                     <div class="absolute -top-3 right-6 px-4 py-1 bg-gradient-to-r from-accent-400 to-accent-500 text-dark-900 text-xs font-bold rounded-full shadow-lg">⭐ BEST SELLER</div>
                     <div class="w-16 h-16 bg-gradient-to-br from-accent-400 to-accent-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-accent-500/20 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/>
                         </svg>
                     </div>
-                    <h3 class="font-heading font-bold text-xl text-gray-900 mb-3">Combo Sealer</h3>
+                    <h3 class="font-heading font-bold text-xl text-gray-900 mb-3">Sealer</h3>
                     <p class="text-gray-700 text-base leading-relaxed mb-4">Kombinasi teknologi terkini yang memberikan hasil paling rapi. Penyembuhan lebih cepat dan nyaman.</p>
-                    <div class="flex items-center gap-2 text-primary-700 font-semibold text-base">
+                    <div class="flex items-center gap-2 text-primary-700 font-semibold text-base mt-auto">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                         <span>Paling populer & direkomendasikan</span>
-                    </div>
-                </div>
-
-                <!-- Method 3: Klamp / Stapler -->
-                <div class="animate-on-scroll bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl border border-gray-100 hover:border-primary-200 transition-all duration-500 group hover:-translate-y-2" style="animation-delay: 0.3s">
-                    <div class="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-primary-500/20 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17l-5.338 3.156a1.188 1.188 0 01-1.662-.898V5.25A2.25 2.25 0 016.67 3h10.66a2.25 2.25 0 012.25 2.25v12.178a1.188 1.188 0 01-1.662.898l-5.338-3.156a1.188 1.188 0 00-1.18 0z"/>
-                        </svg>
-                    </div>
-                    <h3 class="font-heading font-bold text-xl text-gray-900 mb-3">Metode Konvensional Plus</h3>
-                    <p class="text-gray-700 text-base leading-relaxed mb-4">Metode klasik yang dipercaya turun-temurun, dikombinasikan dengan teknik modern untuk hasil optimal.</p>
-                    <div class="flex items-center gap-2 text-primary-700 font-semibold text-base">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-                        <span>Cocok untuk dewasa</span>
                     </div>
                 </div>
             </div>
@@ -506,15 +587,15 @@
                 <h2 class="font-heading font-bold text-3xl md:text-4xl text-gray-900 mb-4 leading-tight">
                     Pilih Paket <span class="text-primary-600">Terbaik</span> untuk Jagoan
                 </h2>
-                <p class="text-gray-700 text-lg md:text-xl">Harga transparan, tanpa biaya tersembunyi. Semua paket termasuk kontrol gratis sampai sembuh.</p>
+                <p class="text-gray-700 text-lg md:text-xl">Harga transparan, tanpa biaya tersembunyi. Semua paket sudah termasuk biaya tindakan dan kontrol gratis sampai sembuh total.</p>
             </div>
 
-            <!-- Pricing Cards -->
-            <div class="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto">
+            <!-- Pricing Cards Grid -->
+            <div class="grid grid-cols-12 gap-6 lg:gap-8 max-w-7xl mx-auto items-stretch">
                 
                 <!-- Bronze Package -->
-                <div class="animate-on-scroll group">
-                    <div class="bg-white rounded-3xl p-8 border-2 border-gray-100 hover:border-primary-200 shadow-sm hover:shadow-xl transition-all duration-500 h-full flex flex-col hover:-translate-y-2">
+                <div class="animate-on-scroll group col-span-12 md:col-span-6 lg:col-span-4 flex flex-col snap-start">
+                    <div class="bg-white rounded-3xl p-6 sm:p-7 lg:p-6 xl:p-8 border-2 border-gray-100 hover:border-primary-200 shadow-sm hover:shadow-xl transition-all duration-500 h-full flex flex-col hover:-translate-y-2">
                         <!-- Header -->
                         <div class="text-center mb-6">
                             <div class="w-14 h-14 mx-auto bg-amber-100 rounded-2xl flex items-center justify-center mb-4">
@@ -533,50 +614,69 @@
                                 <span class="font-heading font-extrabold text-5xl text-gray-900">1,5</span>
                                 <span class="text-gray-500 text-lg font-medium">Juta</span>
                             </div>
+                            <span class="text-xs text-gray-400 block mt-1">(Rp 1.500.000)</span>
                         </div>
 
                         <!-- Features -->
-                        <ul class="space-y-3 mb-8 flex-1">
-                            <li class="flex items-start gap-3">
-                                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                        <ul class="space-y-2.5 mb-8 flex-1">
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                                 </div>
-                                <span class="text-gray-700 text-base">Bius Lokal kombinasi</span>
+                                <span class="text-gray-700 text-sm sm:text-base">Metode Thermocouter Estetik</span>
                             </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                                 </div>
-                                <span class="text-gray-700 text-base">Balutan busa anti lengket</span>
+                                <span class="text-gray-700 text-sm sm:text-base">Tetra Bius Lokal (Salep, Kompres, Semprot, Injeksi)</span>
                             </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                                 </div>
-                                <span class="text-gray-700 text-base">Paket obat lengkap</span>
+                                <span class="text-gray-700 text-sm sm:text-base">Balutan Busa Anti Lengket (opsional)</span>
                             </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                                 </div>
-                                <span class="text-gray-600 text-sm">Celana khitan 1 buah</span>
+                                <span class="text-gray-700 text-sm sm:text-base">Dua Macam Obat (Anti Nyeri & Antibiotik)</span>
                             </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                                 </div>
-                                <span class="text-gray-600 text-sm">1 buah Mainan robot</span>
+                                <span class="text-gray-700 text-sm sm:text-base">Satu Set Kit Perawatan</span>
                             </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                                 </div>
-                                <span class="text-gray-600 text-sm font-semibold text-primary-700">Kontrol gratis sampai sembuh</span>
+                                <span class="text-gray-650 text-sm sm:text-base">Satu Buah Celana Khitan</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-650 text-sm sm:text-base">Satu Buah Sertifikat Khitan</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-650 text-sm sm:text-base">Satu Buah Mainan Robot</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-700" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-primary-700 text-sm sm:text-base font-semibold">Gratis Kontrol Hingga Sembuh</span>
                             </li>
                         </ul>
 
                         <!-- CTA -->
-                        <a href="https://wa.me/6282213085278?text=Halo%2C%20saya%20tertarik%20dengan%20Paket%20Bronze%20Rp1.5jt" 
+                        <a href="https://wa.me/6282213085278?text=Halo%2C%20saya%20tertarik%20dengan%20Paket%20Bronze%20Rp1.500.000" 
                            target="_blank"
                            class="block w-full py-3.5 text-center bg-gray-100 text-gray-700 font-semibold rounded-2xl hover:bg-primary-600 hover:text-white transition-all duration-300 text-sm">
                             Pilih Paket Bronze →
@@ -585,8 +685,8 @@
                 </div>
 
                 <!-- Gold Package (Best Seller) -->
-                <div class="animate-on-scroll group" style="animation-delay: 0.15s">
-                    <div class="bg-gradient-to-b from-primary-600 to-primary-800 rounded-3xl p-8 border-2 border-primary-500 shadow-2xl shadow-primary-500/20 h-full flex flex-col relative hover:-translate-y-2 transition-all duration-500">
+                <div class="animate-on-scroll group col-span-12 md:col-span-6 lg:col-span-4 flex flex-col snap-start" style="animation-delay: 0.15s">
+                    <div class="bg-gradient-to-b from-primary-600 to-primary-800 rounded-3xl p-6 sm:p-7 lg:p-6 xl:p-8 border-2 border-primary-500 shadow-2xl shadow-primary-500/20 h-full flex flex-col relative hover:-translate-y-2 transition-all duration-500">
                         <!-- Best Seller Badge -->
                         <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-1.5 bg-gradient-to-r from-accent-400 to-accent-500 text-dark-900 text-sm font-bold rounded-full shadow-lg whitespace-nowrap">
                             ⭐ Best Seller
@@ -600,7 +700,7 @@
                                 </svg>
                             </div>
                             <h3 class="font-heading font-bold text-xl text-white">Paket Gold</h3>
-                            <p class="text-accent-300 text-sm font-medium mt-1">Combo Sealer</p>
+                            <p class="text-accent-300 text-sm font-medium mt-1">Metode Sealer (Bayi & Anak)</p>
                         </div>
 
                         <!-- Price -->
@@ -610,44 +710,63 @@
                                 <span class="font-heading font-extrabold text-5xl text-white">2</span>
                                 <span class="text-primary-200 text-lg font-medium">Juta</span>
                             </div>
+                            <span class="text-xs text-primary-200/80 block mt-1">(Rp 2.000.000)</span>
                         </div>
 
                         <!-- Features -->
-                        <ul class="space-y-3 mb-8 flex-1">
-                            <li class="flex items-start gap-3">
+                        <ul class="space-y-2.5 mb-8 flex-1">
+                            <li class="flex items-start gap-2.5">
                                 <div class="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3 h-3 text-accent-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                    <svg class="w-3 h-3 text-accent-300" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                                 </div>
-                                <span class="text-white text-base">Bius Lokal kombinasi</span>
+                                <span class="text-white text-sm sm:text-base">Metode Sealer (Bayi & Anak)</span>
                             </li>
-                            <li class="flex items-start gap-3">
+                            <li class="flex items-start gap-2.5">
                                 <div class="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3 h-3 text-accent-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                    <svg class="w-3 h-3 text-accent-300" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                                 </div>
-                                <span class="text-white text-base">Paket obat lengkap</span>
+                                <span class="text-white text-sm sm:text-base">Tetra Bius Lokal (Salep, Kompres, Semprot, Injeksi)</span>
                             </li>
-                            <li class="flex items-start gap-3">
+                            <li class="flex items-start gap-2.5">
                                 <div class="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3 h-3 text-accent-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                    <svg class="w-3 h-3 text-accent-300" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                                 </div>
-                                <span class="text-white text-base">Celana khitan 2 buah</span>
+                                <span class="text-white text-sm sm:text-base">Dua Macam Obat Generik Paten</span>
                             </li>
-                            <li class="flex items-start gap-3">
+                            <li class="flex items-start gap-2.5">
                                 <div class="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3 h-3 text-accent-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                    <svg class="w-3 h-3 text-accent-300" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                                 </div>
-                                <span class="text-white text-base">1 buah Mobil Remote Control</span>
+                                <span class="text-white text-sm sm:text-base">Satu Set Kit Perawatan</span>
                             </li>
-                            <li class="flex items-start gap-3">
+                            <li class="flex items-start gap-2.5">
                                 <div class="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3 h-3 text-accent-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                    <svg class="w-3 h-3 text-accent-300" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                                 </div>
-                                <span class="text-white/90 text-sm font-semibold text-accent-200">Kontrol gratis sampai sembuh</span>
+                                <span class="text-white/90 text-sm sm:text-base">Dua Buah Celana Khitan</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-accent-300" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-white/90 text-sm sm:text-base">Satu Buah Sertifikat Khitan</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-accent-300" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-white/90 text-sm sm:text-base">Satu Buah Mainan Mobil RC Kecil</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-white/30 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-accent-200" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-accent-200 text-sm sm:text-base font-semibold">Gratis Kontrol Hingga Sembuh</span>
                             </li>
                         </ul>
 
                         <!-- CTA -->
-                        <a href="https://wa.me/6282213085278?text=Halo%2C%20saya%20tertarik%20dengan%20Paket%20Gold%20Rp2jt" 
+                        <a href="https://wa.me/6282213085278?text=Halo%2C%20saya%20tertarik%20dengan%20Paket%20Gold%20Rp2.000.000" 
                            target="_blank"
                            class="block w-full py-3.5 text-center bg-white text-primary-700 font-bold rounded-2xl hover:bg-accent-300 hover:text-dark-900 transition-all duration-300 text-sm shadow-lg">
                             Pilih Paket Gold ⭐ →
@@ -655,20 +774,208 @@
                     </div>
                 </div>
 
-                <!-- Dewasa Package -->
-                <div class="animate-on-scroll group" style="animation-delay: 0.3s">
-                    <div class="bg-white rounded-3xl p-8 border-2 border-gray-100 hover:border-primary-200 shadow-sm hover:shadow-xl transition-all duration-500 h-full flex flex-col hover:-translate-y-2">
+                <!-- Platinum Package -->
+                <div class="animate-on-scroll group col-span-12 md:col-span-6 lg:col-span-4 flex flex-col snap-start" style="animation-delay: 0.3s">
+                    <div class="bg-white rounded-3xl p-6 sm:p-7 lg:p-6 xl:p-8 border-2 border-gray-100 hover:border-primary-200 shadow-sm hover:shadow-xl transition-all duration-500 h-full flex flex-col hover:-translate-y-2">
                         <!-- Header -->
                         <div class="text-center mb-6">
-                            <div class="w-14 h-14 mx-auto bg-primary-100 rounded-2xl flex items-center justify-center mb-4">
+                            <div class="w-14 h-14 mx-auto bg-blue-50 rounded-2xl flex items-center justify-center mb-4">
+                                <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-heading font-bold text-xl text-gray-900">Paket Platinum</h3>
+                            <p class="text-blue-600 text-sm font-medium mt-1">Sealer (Bayi, Anak, & Anak Gemuk)</p>
+                        </div>
+                        
+                        <!-- Price -->
+                        <div class="text-center mb-6">
+                            <div class="flex items-baseline justify-center gap-1">
+                                <span class="text-gray-500 text-lg font-medium">Rp</span>
+                                <span class="font-heading font-extrabold text-5xl text-gray-900">2,5</span>
+                                <span class="text-gray-500 text-lg font-medium">Juta</span>
+                            </div>
+                            <span class="text-xs text-gray-400 block mt-1">(Rp 2.500.000)</span>
+                        </div>
+
+                        <!-- Features -->
+                        <ul class="space-y-2.5 mb-8 flex-1">
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-700 text-sm sm:text-base">Metode Sealer (Bayi, Anak, & Anak Gemuk)</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-700 text-sm sm:text-base">Tetra Bius Lokal (Salep, Kompres, Semprot, Injeksi)</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-700 text-sm sm:text-base">Salep Bius Paten</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-700 text-sm sm:text-base">Dua Macam Obat Paten</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-700 text-sm sm:text-base">Satu Set Kit Perawatan</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-650 text-sm sm:text-base">Tiga Buah Celana Khitan</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-650 text-sm sm:text-base">Satu Buah Sertifikat Khitan</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-655 text-sm sm:text-base">Satu Buah Mainan Mobil RC Besar</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-700" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-primary-700 text-sm sm:text-base font-semibold">Gratis Kontrol Hingga Sembuh</span>
+                            </li>
+                        </ul>
+
+                        <!-- CTA -->
+                        <a href="https://wa.me/6282213085278?text=Halo%2C%20saya%20tertarik%20dengan%20Paket%20Platinum%20Rp2.500.000" 
+                           target="_blank"
+                           class="block w-full py-3.5 text-center bg-gray-100 text-gray-700 font-semibold rounded-2xl hover:bg-primary-600 hover:text-white transition-all duration-300 text-sm">
+                            Pilih Paket Platinum →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- VIP Package -->
+                <div class="animate-on-scroll group col-span-12 md:col-span-6 lg:col-span-4 md:col-start-auto lg:col-start-3 flex flex-col snap-start" style="animation-delay: 0.45s">
+                    <div class="bg-white rounded-3xl p-6 sm:p-7 lg:p-6 xl:p-8 border-2 border-gray-100 hover:border-purple-200 shadow-sm hover:shadow-xl transition-all duration-500 h-full flex flex-col hover:-translate-y-2">
+                        <!-- Header -->
+                        <div class="text-center mb-6">
+                            <div class="w-14 h-14 mx-auto bg-purple-50 rounded-2xl flex items-center justify-center mb-4">
+                                <svg class="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75h19.5m-18-3.75h16.5L19.5 7.5l-4.5 4.5-3-6-3 6-4.5-4.5L3.75 15z"/>
+                                </svg>
+                            </div>
+                            <h3 class="font-heading font-bold text-xl text-gray-900">Paket Khitan VIP</h3>
+                            <p class="text-purple-600 text-sm font-medium mt-1">Metode Sealer Eksklusif</p>
+                        </div>
+                        
+                        <!-- Price -->
+                        <div class="text-center mb-6">
+                            <div class="flex items-baseline justify-center gap-1">
+                                <span class="text-gray-500 text-lg font-medium">Rp</span>
+                                <span class="font-heading font-extrabold text-5xl text-gray-900">3,5</span>
+                                <span class="text-gray-500 text-lg font-medium">Juta</span>
+                            </div>
+                            <span class="text-xs text-gray-400 block mt-1">(Rp 3.500.000)</span>
+                        </div>
+
+                        <!-- Features -->
+                        <ul class="space-y-2.5 mb-8 flex-1">
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-700 text-sm sm:text-base">Metode Sealer Eksklusif</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-700 text-sm sm:text-base">Tetra Bius Lokal (Salep, Kompres, Semprot, Injeksi)</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-700 text-sm sm:text-base">Salep Anestesi Paten & Kombinasi Injeksi Paten</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-700 text-sm sm:text-base">Dua Macam Obat Paten & Multivitamin</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-700 text-sm sm:text-base">Satu Set Kit Perawatan</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-650 text-sm sm:text-base">Empat Buah Celana Khitan</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-650 text-sm sm:text-base">Sertifikat & Bebas Pilih Mainan (Mobil/Robot)</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-650 text-sm sm:text-base">Free Roti Buaya, Mug & Topi Unik Kak Topa</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-700 text-sm sm:text-base font-semibold">Konsultasi Pasca Khitan Bersama Dokter</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-700" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-primary-700 text-sm sm:text-base font-semibold">Gratis Kontrol Hingga Sembuh</span>
+                            </li>
+                        </ul>
+
+                        <!-- CTA -->
+                        <a href="https://wa.me/6282213085278?text=Halo%2C%20saya%20tertarik%20dengan%20Paket%20VIP%20Rp3.500.000" 
+                           target="_blank"
+                           class="block w-full py-3.5 text-center bg-gray-100 text-gray-700 font-semibold rounded-2xl hover:bg-primary-600 hover:text-white transition-all duration-300 text-sm">
+                            Pilih Paket VIP →
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Dewasa Modern Package -->
+                <div class="animate-on-scroll group col-span-12 md:col-span-6 lg:col-span-4 md:col-start-4 lg:col-start-auto flex flex-col snap-start" style="animation-delay: 0.6s">
+                    <div class="bg-white rounded-3xl p-6 sm:p-7 lg:p-6 xl:p-8 border-2 border-gray-100 hover:border-primary-200 shadow-sm hover:shadow-xl transition-all duration-500 h-full flex flex-col hover:-translate-y-2">
+                        <!-- Header -->
+                        <div class="text-center mb-6">
+                            <div class="w-14 h-14 mx-auto bg-primary-50 rounded-2xl flex items-center justify-center mb-4">
                                 <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/>
                                 </svg>
                             </div>
-                            <h3 class="font-heading font-bold text-xl text-gray-900">Paket Dewasa</h3>
-                            <p class="text-primary-600 text-sm font-medium mt-1">ThermoCauter Estetik</p>
+                            <h3 class="font-heading font-bold text-xl text-gray-900">Paket Dewasa Modern</h3>
+                            <p class="text-primary-600 text-sm font-medium mt-1">Metode Sealer Dewasa</p>
                         </div>
-
+                        
                         <!-- Price -->
                         <div class="text-center mb-6">
                             <div class="flex items-baseline justify-center gap-1">
@@ -676,47 +983,60 @@
                                 <span class="font-heading font-extrabold text-5xl text-gray-900">4</span>
                                 <span class="text-gray-500 text-lg font-medium">Juta</span>
                             </div>
+                            <span class="text-xs text-gray-400 block mt-1">(Rp 4.000.000)</span>
                         </div>
 
                         <!-- Features -->
-                        <ul class="space-y-3 mb-8 flex-1">
-                            <li class="flex items-start gap-3">
-                                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                        <ul class="space-y-2.5 mb-8 flex-1">
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                                 </div>
-                                <span class="text-gray-600 text-sm">Bius Lokal kombinasi</span>
+                                <span class="text-gray-700 text-sm sm:text-base">Metode Sealer Dewasa</span>
                             </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                                 </div>
-                                <span class="text-gray-600 text-sm">Paket obat lengkap</span>
+                                <span class="text-gray-700 text-sm sm:text-base">Tetra Bius Lokal (Salep, Kompres, Semprot, Injeksi)</span>
                             </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                                 </div>
-                                <span class="text-gray-600 text-sm">Celana khitan 3 buah</span>
+                                <span class="text-gray-700 text-sm sm:text-base">Dua Macam Obat Generik Paten</span>
                             </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                                 </div>
-                                <span class="text-gray-600 text-sm font-semibold text-primary-700">Kontrol gratis sampai sembuh</span>
+                                <span class="text-gray-700 text-sm sm:text-base">Satu Set Kit Perawatan</span>
                             </li>
-                            <li class="flex items-start gap-3">
-                                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
                                 </div>
-                                <span class="text-gray-600 text-sm font-semibold text-primary-700">Follow Up oleh dokter langsung</span>
+                                <span class="text-gray-650 text-sm sm:text-base">Dua Buah Celana Khitan Dewasa</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-50 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-600" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-gray-650 text-sm sm:text-base">Satu Buah Sertifikat Khitan</span>
+                            </li>
+                            <li class="flex items-start gap-2.5">
+                                <div class="w-5 h-5 bg-primary-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <svg class="w-3 h-3 text-primary-700" fill="none" stroke="currentColor" stroke-width="3.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+                                </div>
+                                <span class="text-primary-700 text-sm sm:text-base font-semibold">Gratis Kontrol Hingga Sembuh</span>
                             </li>
                         </ul>
 
                         <!-- CTA -->
-                        <a href="https://wa.me/6282213085278?text=Halo%2C%20saya%20tertarik%20dengan%20Paket%20Dewasa%20Rp4jt" 
+                        <a href="https://wa.me/6282213085278?text=Halo%2C%20saya%20tertarik%20dengan%20Paket%20Dewasa%20Modern%20Rp4.000.000" 
                            target="_blank"
                            class="block w-full py-3.5 text-center bg-gray-100 text-gray-700 font-semibold rounded-2xl hover:bg-primary-600 hover:text-white transition-all duration-300 text-sm">
-                            Pilih Paket Dewasa →
+                            Pilih Paket Dewasa Modern →
                         </a>
                     </div>
                 </div>
@@ -726,7 +1046,7 @@
             <div class="text-center mt-10 animate-on-scroll">
                 <p class="text-gray-500 text-sm flex items-center justify-center gap-2">
                     <svg class="w-4 h-4 text-primary-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"/></svg>
-                    Harga sudah termasuk semua biaya tindakan. Bisa datang langsung atau layanan home visit.
+                    Harga sudah termasuk semua biaya tindakan. Bisa datang langsung.
                 </p>
             </div>
         </div>
@@ -743,12 +1063,12 @@
             <div class="text-center max-w-3xl mx-auto mb-16 animate-on-scroll">
                 <span class="inline-block px-4 py-1.5 bg-primary-500/15 text-primary-400 text-sm font-semibold rounded-full mb-4">Kenapa Kami?</span>
                 <h2 class="font-heading font-bold text-3xl md:text-4xl text-white mb-4 leading-tight">
-                    Alasan Orangtua Memilih <span class="text-primary-400">Rumah Khitan Mustopa</span>
+                    Alasan Orangtua Memilih <span class="text-primary-400">Rumah Khitan Kak Topa</span>
                 </h2>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="animate-on-scroll bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 group">
+            <div class="flex flex-wrap justify-center gap-6 max-w-6xl mx-auto">
+                <div class="animate-on-scroll bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 group w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col">
                     <div class="w-16 h-16 mx-auto bg-primary-500/20 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                         <svg class="w-8 h-8 text-primary-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
@@ -758,7 +1078,7 @@
                     <p class="text-gray-400 text-sm leading-relaxed">Anak lebih nyaman karena orangtua bisa mendampingi selama proses khitan</p>
                 </div>
 
-                <div class="animate-on-scroll bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 group" style="animation-delay: 0.1s">
+                <div class="animate-on-scroll bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 group w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col" style="animation-delay: 0.1s">
                     <div class="w-16 h-16 mx-auto bg-primary-500/20 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                         <svg class="w-8 h-8 text-primary-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3H21m-3.75 3H21"/>
@@ -768,25 +1088,17 @@
                     <p class="text-gray-400 text-sm leading-relaxed">Fasilitas lengkap dengan AC, area bermain anak, ruang tindakan steril</p>
                 </div>
 
-                <div class="animate-on-scroll bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 group" style="animation-delay: 0.2s">
+                <div class="animate-on-scroll bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 group w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] flex flex-col" style="animation-delay: 0.2s">
                     <div class="w-16 h-16 mx-auto bg-primary-500/20 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                         <svg class="w-8 h-8 text-primary-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/>
                         </svg>
                     </div>
-                    <h3 class="font-heading font-bold text-white text-lg mb-2">Konsultasi 24 Jam</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Tim medis siap melayani konsultasi via WhatsApp kapan saja</p>
+                    <h3 class="font-heading font-bold text-white text-lg mb-2">Didampingi Sampai Sembuh</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Tim medis kami siap mendampingi sampai sembuh, gratis tanpa biaya tambahan</p>
                 </div>
+            </div>
 
-                <div class="animate-on-scroll bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-all duration-300 group" style="animation-delay: 0.3s">
-                    <div class="w-16 h-16 mx-auto bg-primary-500/20 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-8 h-8 text-primary-400" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/>
-                        </svg>
-                    </div>
-                    <h3 class="font-heading font-bold text-white text-lg mb-2">Layanan Home Visit</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Tidak bisa datang? Kami bisa datang ke rumah Anda</p>
-                </div>
             </div>
         </div>
     </section>
@@ -831,11 +1143,11 @@
                 </div>
             </div>
 
-            <!-- Testimonial Cards Slider -->
+            <!-- Testimonial Cards Grid/Slider -->
             <div class="relative">
-                <div id="testimonial-slider" class="flex gap-6 overflow-x-auto scroll-smooth pb-6 snap-x snap-mandatory testimonial-scrollbar">
+                <div id="testimonial-slider" class="flex lg:grid lg:grid-cols-3 gap-6 overflow-x-auto lg:overflow-visible scroll-smooth pb-6 lg:pb-0 snap-x snap-mandatory testimonial-scrollbar">
                     <!-- Testimoni 1 -->
-                    <div class="min-w-[320px] md:min-w-[380px] snap-start">
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-[380px] lg:min-w-0 snap-start">
                         <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 h-full">
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center font-heading font-bold text-primary-600 text-sm">NP</div>
@@ -850,12 +1162,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-gray-600 text-sm leading-relaxed">"Pengalaman pertama punya anak sunat, alhamdulillah nemu yang pas yaitu di Rumah Khitan Mustopa. Pelayanan sangat memuaskan, dr. yang super ramah sehingga anak gak takut, beserta staff yang ramah. The best!"</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">"Pengalaman pertama punya anak sunat, alhamdulillah nemu yang pas yaitu di Rumah Khitan Kak Topa. Pelayanan sangat memuaskan, dr. yang super ramah sehingga anak gak takut, beserta staff yang ramah. The best!"</p>
                         </div>
                     </div>
 
                     <!-- Testimoni 2 -->
-                    <div class="min-w-[320px] md:min-w-[380px] snap-start">
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-[380px] lg:min-w-0 snap-start">
                         <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 h-full">
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-10 h-10 bg-accent-100 rounded-full flex items-center justify-center font-heading font-bold text-accent-600 text-sm">HS</div>
@@ -870,12 +1182,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-gray-600 text-sm leading-relaxed">"Khitan biasanya menjadi trauma bagi anak, namun di Rumah Khitan Mustopa itu tidak berlaku. Ananda sudah bisa langsung beraktivitas pasca khitan."</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">"Khitan biasanya menjadi trauma bagi anak, namun di Rumah Khitan Kak Topa itu tidak berlaku. Ananda sudah bisa langsung beraktivitas pasca khitan."</p>
                         </div>
                     </div>
 
                     <!-- Testimoni 3 -->
-                    <div class="min-w-[320px] md:min-w-[380px] snap-start">
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-[380px] lg:min-w-0 snap-start">
                         <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 h-full">
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center font-heading font-bold text-green-600 text-sm">DA</div>
@@ -890,12 +1202,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-gray-600 text-sm leading-relaxed">"Klinik khitan Mustopa memberikan pelayanan yang ramah, cepat, dan memuaskan. Bangunan dan ruangan didesain begitu nyaman serta sangat bersih. Dokter Irvan profesional dan ramah."</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">"Klinik khitan Kak Topa memberikan pelayanan yang ramah, cepat, dan memuaskan. Bangunan dan ruangan didesain begitu nyaman serta sangat bersih. Dokter Irvan profesional dan ramah."</p>
                         </div>
                     </div>
 
                     <!-- Testimoni 4 -->
-                    <div class="min-w-[320px] md:min-w-[380px] snap-start">
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-[380px] lg:min-w-0 snap-start">
                         <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 h-full">
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center font-heading font-bold text-blue-600 text-sm">H</div>
@@ -915,7 +1227,7 @@
                     </div>
 
                     <!-- Testimoni 5 -->
-                    <div class="min-w-[320px] md:min-w-[380px] snap-start">
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-[380px] lg:min-w-0 snap-start">
                         <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 h-full">
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center font-heading font-bold text-purple-600 text-sm">MS</div>
@@ -930,12 +1242,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-gray-600 text-sm leading-relaxed">"Terima kasih Klinik Khitan Mustopa. Kami begitu puas. Proses khitan bisa senyaman itu, jauh dari yang saya bayangkan. Sampai hampir 1 bulan perkembangan kondisi putra kami terus dipantau."</p>
+                            <p class="text-gray-600 text-sm leading-relaxed">"Terima kasih Klinik Khitan Kak Topa. Kami begitu puas. Proses khitan bisa senyaman itu, jauh dari yang saya bayangkan. Sampai hampir 1 bulan perkembangan kondisi putra kami terus dipantau."</p>
                         </div>
                     </div>
 
                     <!-- Testimoni 6 -->
-                    <div class="min-w-[320px] md:min-w-[380px] snap-start">
+                    <div class="min-w-[280px] sm:min-w-[320px] md:min-w-[380px] lg:min-w-0 snap-start">
                         <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 h-full">
                             <div class="flex items-center gap-3 mb-4">
                                 <div class="w-10 h-10 bg-rose-100 rounded-full flex items-center justify-center font-heading font-bold text-rose-600 text-sm">SM</div>
@@ -982,7 +1294,7 @@
                 <h2 class="font-heading font-bold text-3xl md:text-4xl text-gray-900 mb-4 leading-tight">
                     Pertanyaan yang Sering <span class="text-primary-600">Ditanyakan</span>
                 </h2>
-                <p class="text-gray-600 text-lg">Jawaban untuk pertanyaan umum seputar khitan di Rumah Khitan Mustopa</p>
+                <p class="text-gray-600 text-lg">Jawaban untuk pertanyaan umum seputar khitan di Rumah Khitan Kak Topa</p>
             </div>
 
             <div class="space-y-4 animate-on-scroll">
@@ -995,7 +1307,7 @@
                         </svg>
                     </button>
                     <div class="faq-content hidden px-6 pb-5">
-                        <p class="text-gray-600 leading-relaxed">Kami melayani khitan untuk semua usia mulai dari <strong>bayi (mulai 2 bulan), anak-anak, remaja, hingga dewasa</strong>. Tidak ada usia yang terlalu muda atau terlalu tua untuk khitan. Konsultasikan dengan tim medis kami untuk menentukan metode yang paling sesuai dengan usia putra Anda.</p>
+                        <p class="text-gray-600 leading-relaxed">Kami melayani khitan untuk semua usia mulai dari <strong>bayi baru lahir, anak-anak, remaja, hingga dewasa</strong>. Tidak ada usia yang terlalu muda atau terlalu tua untuk khitan. Konsultasikan dengan tim medis kami untuk menentukan metode yang paling sesuai dengan usia putra Anda.</p>
                     </div>
                 </div>
 
@@ -1035,19 +1347,6 @@
                     </button>
                     <div class="faq-content hidden px-6 pb-5">
                         <p class="text-gray-600 leading-relaxed"><strong>Tentu saja!</strong> Kami sangat menganjurkan orangtua untuk mendampingi anak selama proses khitan. Kehadiran orangtua membuat anak lebih tenang dan nyaman. Anda bisa menyaksikan langsung seluruh proses tindakan.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ 5 -->
-                <div class="faq-item bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 hover:border-primary-200 transition-colors">
-                    <button class="faq-toggle w-full px-6 py-5 text-left flex items-center justify-between gap-4" aria-expanded="false">
-                        <span class="font-heading font-semibold text-gray-900 text-base">Apakah tersedia layanan home visit?</span>
-                        <svg class="faq-icon w-5 h-5 text-primary-500 flex-shrink-0 transition-transform duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/>
-                        </svg>
-                    </button>
-                    <div class="faq-content hidden px-6 pb-5">
-                        <p class="text-gray-600 leading-relaxed"><strong>Ya, kami menyediakan layanan home visit.</strong> Jika Anda tidak bisa datang ke klinik, tim medis kami bisa datang ke rumah Anda dengan peralatan lengkap yang sama. Hubungi kami via WhatsApp untuk info lebih lanjut dan penjadwalan.</p>
                     </div>
                 </div>
 
@@ -1111,7 +1410,7 @@
                             </div>
                             <div>
                                 <p class="text-white font-semibold text-base">WhatsApp</p>
-                                <p class="text-gray-400 text-sm">0857-2239-9498</p>
+                                <p class="text-gray-400 text-sm">0822-1308-5278</p>
                             </div>
                         </a>
 
@@ -1124,7 +1423,7 @@
                             </div>
                             <div>
                                 <p class="text-white font-semibold text-base">Alamat Klinik</p>
-                                <p class="text-gray-400 text-sm">Bandung Barat, Jawa Barat</p>
+                                <p class="text-gray-400 text-sm" data-branch-text="address">Bandung Barat, Jawa Barat</p>
                             </div>
                         </div>
 
@@ -1143,10 +1442,10 @@
 
                     <!-- Social Links -->
                     <div class="flex items-center gap-4">
-                        <a href="https://www.instagram.com/rumahkhitanmustopa/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 transition-all duration-300 hover:scale-110" aria-label="Instagram">
+                        <a href="https://www.instagram.com/rumahkhitanKak Topa/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 transition-all duration-300 hover:scale-110" aria-label="Instagram">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                         </a>
-                        <a href="https://www.facebook.com/rumahkhitanmustopa" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white hover:bg-blue-600 transition-all duration-300 hover:scale-110" aria-label="Facebook">
+                        <a href="https://www.facebook.com/rumahkhitanKak Topa" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white hover:bg-blue-600 transition-all duration-300 hover:scale-110" aria-label="Facebook">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                         </a>
                         <a href="https://maps.google.com/?cid=5890986183128467829" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white hover:bg-red-500 transition-all duration-300 hover:scale-110" aria-label="Google Maps">
@@ -1161,14 +1460,14 @@
                         <!-- Map -->
                         <div class="aspect-[4/3] w-full">
                             <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.0377!2d107.5184!3d-6.8397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e33e8f152829%3A0x51c0fcb8c61b4975!2sRumah+Khitan+Mustopa!5e0!3m2!1sid!2sid!4v1" 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.0377!2d107.5184!3d-6.8397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e33e8f152829%3A0x51c0fcb8c61b4975!2sRumah+Khitan+Kak Topa!5e0!3m2!1sid!2sid!4v1" 
                                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" 
                                 referrerpolicy="no-referrer-when-downgrade"
                                 class="w-full h-full"></iframe>
                         </div>
                         <!-- CTA -->
                         <div class="p-6 space-y-4">
-                            <a href="https://wa.me/6282213085278?text=Halo%20Rumah%20Khitan%20Mustopa%2C%20saya%20ingin%20mendaftar%20khitan" 
+                            <a href="https://wa.me/6282213085278?text=Halo%20Rumah%20Khitan%20Kak Topa%2C%20saya%20ingin%20mendaftar%20khitan" 
                                target="_blank"
                                class="block w-full py-4 text-center bg-gradient-to-r from-green-500 to-green-600 text-white font-bold rounded-2xl hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg shadow-green-500/25 hover:-translate-y-0.5 text-lg">
                                 📱 Daftar via WhatsApp
@@ -1193,18 +1492,18 @@
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center overflow-hidden p-0.5 shadow-md">
-                        <img src="logo.png" alt="Logo Rumah Khitan Mustopa" class="w-full h-full object-contain">
+                        <img src="logo.png" alt="Logo Rumah Khitan Kak Topa" class="w-full h-full object-contain">
                     </div>
                     <div>
-                        <p class="font-heading font-bold text-white text-sm">Rumah Khitan Mustopa</p>
+                        <p class="font-heading font-bold text-white text-sm">Rumah Khitan Kak Topa</p>
                         <p class="text-gray-500 text-xs">Jagoan Gak Takut diSunat</p>
                     </div>
                 </div>
                 <p class="text-gray-500 text-sm text-center">
-                    &copy; 2024 Rumah Khitan Mustopa. All rights reserved.
+                    &copy; 2024 Rumah Khitan Kak Topa. All rights reserved.
                 </p>
                 <div class="flex items-center gap-4">
-                    <a href="https://www.instagram.com/rumahkhitanmustopa/" target="_blank" class="text-gray-500 hover:text-white transition-colors" aria-label="Instagram">
+                    <a href="https://www.instagram.com/rumahkhitanKak Topa/" target="_blank" class="text-gray-500 hover:text-white transition-colors" aria-label="Instagram">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                     </a>
                     <a href="https://www.facebook.com/rumahkhitanmustopa" target="_blank" class="text-gray-500 hover:text-white transition-colors" aria-label="Facebook">

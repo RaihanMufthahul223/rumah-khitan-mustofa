@@ -2,7 +2,102 @@
 // RUMAH KHITAN MUSTOPA - Main JavaScript
 // ============================================
 
+// ============================================
+// BRANCH DATA CONFIGURATION
+// ============================================
+const branchData = {
+    bandung: {
+        name: 'Cabang Bandung',
+        'clinic-location': 'Klinik Khitan Modern di Bandung Barat',
+        'address': 'Bandung Barat, Jawa Barat',
+    },
+    garut: {
+        name: 'Cabang Garut',
+        'clinic-location': 'Klinik Khitan Modern di Garut',
+        'address': 'Garut, Jawa Barat',
+    }
+};
+
+// ============================================
+// BRANCH SELECTION FUNCTION (global scope)
+// ============================================
+function selectBranch(branch) {
+    const overlay = document.getElementById('branch-overlay');
+    if (!overlay) return;
+
+    // Store selection
+    sessionStorage.setItem('selectedBranch', branch);
+
+    // Apply branch-specific text
+    applyBranchData(branch);
+
+    // Update branch labels in navbar
+    updateBranchLabels(branch);
+
+    // Animate out the overlay
+    overlay.classList.add('branch-exit');
+
+    // Remove overlay from DOM after animation
+    setTimeout(() => {
+        overlay.style.display = 'none';
+        document.body.style.overflow = '';
+    }, 600);
+}
+
+function switchBranch() {
+    const overlay = document.getElementById('branch-overlay');
+    if (!overlay) return;
+
+    // Clear saved selection
+    sessionStorage.removeItem('selectedBranch');
+
+    // Reset overlay animation classes
+    overlay.classList.remove('branch-exit');
+    overlay.style.display = '';
+    document.body.style.overflow = 'hidden';
+
+    // Close mobile menu if open
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+    const menuLabel = document.getElementById('menu-label');
+    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+        if (iconOpen) iconOpen.classList.remove('hidden');
+        if (iconClose) iconClose.classList.add('hidden');
+        if (menuLabel) menuLabel.textContent = 'Menu';
+    }
+
+    // Scroll to top
+    window.scrollTo({ top: 0 });
+}
+
+function updateBranchLabels(branch) {
+    const data = branchData[branch];
+    if (!data) return;
+
+    const desktopLabel = document.getElementById('branch-label-desktop');
+    const mobileLabel = document.getElementById('branch-label-mobile');
+
+    if (desktopLabel) desktopLabel.textContent = data.name;
+    if (mobileLabel) mobileLabel.textContent = data.name + ' — Ganti';
+}
+
+function applyBranchData(branch) {
+    const data = branchData[branch];
+    if (!data) return;
+
+    // Update all elements with data-branch-text attribute
+    document.querySelectorAll('[data-branch-text]').forEach(el => {
+        const key = el.getAttribute('data-branch-text');
+        if (data[key]) {
+            el.textContent = data[key];
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    initBranchSelector();
     initNavbar();
     initMobileMenu();
     initScrollAnimations();
@@ -10,6 +105,24 @@ document.addEventListener('DOMContentLoaded', () => {
     initCounters();
     initSmoothScroll();
 });
+
+// ============================================
+// BRANCH SELECTOR INIT
+// ============================================
+function initBranchSelector() {
+    const overlay = document.getElementById('branch-overlay');
+    const savedBranch = sessionStorage.getItem('selectedBranch');
+
+    if (savedBranch && overlay) {
+        // Branch already selected, skip overlay
+        overlay.style.display = 'none';
+        applyBranchData(savedBranch);
+        updateBranchLabels(savedBranch);
+    } else if (overlay) {
+        // Show overlay and prevent scrolling
+        document.body.style.overflow = 'hidden';
+    }
+}
 
 // ============================================
 // NAVBAR SCROLL BEHAVIOR
