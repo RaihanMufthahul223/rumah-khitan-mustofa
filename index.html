@@ -104,7 +104,7 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="font-body text-gray-800 bg-white overflow-x-hidden">
 
@@ -129,7 +129,7 @@
                 <!-- Logo & Title -->
                 <div class="mb-6 md:mb-10 branch-fade-in" style="animation-delay: 0.1s">
                     <div class="w-16 h-16 md:w-20 md:h-20 mx-auto rounded-2xl bg-white flex items-center justify-center shadow-2xl shadow-primary-500/20 mb-4 md:mb-6 overflow-hidden p-1">
-                        <img src="logo.png" alt="Logo Rumah Khitan Mustopa" class="w-full h-full object-contain">
+                        <img src="assets/images/logo.png" alt="Logo Rumah Khitan Mustopa" class="w-full h-full object-contain">
                     </div>
                     <h1 class="font-heading font-extrabold text-2xl sm:text-4xl md:text-5xl text-white mb-2 md:mb-3 leading-tight">
                         Rumah Khitan <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-primary-300">Mustopa</span>
@@ -145,7 +145,7 @@
                         <div class="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-primary-500/0 to-primary-700/0 group-hover:from-primary-500/10 group-hover:to-primary-700/5 transition-all duration-500 z-10"></div>
                         <!-- Clinic Photo -->
                         <div class="relative w-full shrink-0 aspect-[21/9] sm:aspect-[16/10] overflow-hidden">
-                            <img src="clinic-bandung.png" alt="Klinik Rumah Khitan Mustopa Bandung" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <img src="assets/images/clinic-bandung.png" alt="Klinik Rumah Khitan Mustopa Bandung" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
                         </div>
                         <div class="relative p-4 sm:p-6 md:p-7 flex flex-col justify-between flex-grow">
@@ -168,7 +168,7 @@
                         <div class="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-accent-500/0 to-accent-700/0 group-hover:from-accent-500/10 group-hover:to-accent-700/5 transition-all duration-500 z-10"></div>
                         <!-- Clinic Photo -->
                         <div class="relative w-full shrink-0 aspect-[21/9] sm:aspect-[16/10] overflow-hidden">
-                            <img src="clinic-garut.png" alt="Klinik Rumah Khitan Mustopa Garut" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <img src="assets/images/clinic-garut.png" alt="Klinik Rumah Khitan Mustopa Garut" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
                         </div>
                         <div class="relative p-4 sm:p-6 md:p-7 flex flex-col justify-between flex-grow">
@@ -219,7 +219,7 @@
                 <!-- Logo -->
                 <a href="#" class="flex items-center gap-2 group" id="nav-logo">
                     <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white flex items-center justify-center shadow-lg group-hover:shadow-primary-500/30 transition-all duration-300 overflow-hidden p-0.5">
-                        <img src="logo.png" alt="Logo Rumah Khitan Kak Topa" class="w-full h-full object-contain">
+                        <img src="assets/images/logo.png" alt="Logo Rumah Khitan Kak Topa" class="w-full h-full object-contain">
                     </div>
                     <div class="hidden sm:block">
                         <p class="font-heading font-bold text-lg leading-tight text-white group-hover:text-primary-300 transition-colors">Rumah Khitan</p>
@@ -281,7 +281,7 @@
                 <!-- Nomor Telepon - langsung terlihat di mobile menu -->
                 <a href="tel:+6282213085278" 
                    class="block mt-3 px-5 py-4 bg-white/10 text-white text-lg font-bold rounded-xl text-center border border-white/20">
-                    📞 Telepon: 0822-1308-5278
+                    📞 Telepon: <span data-branch-text="phone-display">0822-1308-5278</span>
                 </a>
                 <a href="https://wa.me/6282213085278?text=Halo%20Rumah%20Khitan%20Mustopa%2C%20saya%20ingin%20daftar%20khitan" 
                    target="_blank"
@@ -429,7 +429,7 @@
                 <div class="animate-on-scroll relative">
                     <div class="relative rounded-3xl overflow-hidden shadow-2xl">
                         <div class="aspect-[4/3] bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center overflow-hidden relative">
-                            <img id="about-clinic-img" src="clinic-bandung.png" alt="Klinik Rumah Khitan Mustopa Bandung" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
+                            <img id="about-clinic-img" data-branch-img="photoUrl" src="assets/images/clinic-bandung.png" alt="Klinik Rumah Khitan Mustopa Bandung" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
                             <div class="absolute bottom-6 left-6 right-6 text-white text-left">
                                 <h3 class="font-heading font-bold text-2xl text-white drop-shadow-md">Rumah Khitan Mustopa</h3>
@@ -1410,7 +1410,7 @@
                             </div>
                             <div>
                                 <p class="text-white font-semibold text-base">WhatsApp</p>
-                                <p class="text-gray-400 text-sm">0822-1308-5278</p>
+                                <p class="text-gray-400 text-sm" data-branch-text="phone-display">0822-1308-5278</p>
                             </div>
                         </a>
 
@@ -1448,7 +1448,7 @@
                         <a href="https://www.facebook.com/rumahkhitanKak Topa" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white hover:bg-blue-600 transition-all duration-300 hover:scale-110" aria-label="Facebook">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                         </a>
-                        <a href="https://maps.google.com/?cid=5890986183128467829" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white hover:bg-red-500 transition-all duration-300 hover:scale-110" aria-label="Google Maps">
+                        <a href="https://maps.google.com/?cid=5890986183128467829" data-branch-link="googleMapsUrl" target="_blank" rel="noopener noreferrer" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white hover:bg-red-500 transition-all duration-300 hover:scale-110" aria-label="Google Maps">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C7.802 0 4.4 3.402 4.4 7.6c0 5.7 7.6 16.4 7.6 16.4s7.6-10.7 7.6-16.4C19.6 3.402 16.198 0 12 0zm0 11.4c-2.098 0-3.8-1.702-3.8-3.8S9.902 3.8 12 3.8s3.8 1.702 3.8 3.8-1.702 3.8-3.8 3.8z"/></svg>
                         </a>
                     </div>
@@ -1460,6 +1460,7 @@
                         <!-- Map -->
                         <div class="aspect-[4/3] w-full">
                             <iframe 
+                                id="map-iframe"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.0377!2d107.5184!3d-6.8397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e33e8f152829%3A0x51c0fcb8c61b4975!2sRumah+Khitan+Kak Topa!5e0!3m2!1sid!2sid!4v1" 
                                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" 
                                 referrerpolicy="no-referrer-when-downgrade"
@@ -1474,6 +1475,7 @@
                             </a>
                             <a href="https://maps.google.com/?cid=5890986183128467829" 
                                target="_blank"
+                               data-branch-link="googleMapsUrl"
                                class="block w-full py-4 text-center bg-white/10 text-white font-semibold rounded-2xl hover:bg-white/20 transition-all duration-300 border border-white/20">
                                 📍 Buka di Google Maps
                             </a>
@@ -1492,7 +1494,7 @@
             <div class="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center overflow-hidden p-0.5 shadow-md">
-                        <img src="logo.png" alt="Logo Rumah Khitan Kak Topa" class="w-full h-full object-contain">
+                        <img src="assets/images/logo.png" alt="Logo Rumah Khitan Kak Topa" class="w-full h-full object-contain">
                     </div>
                     <div>
                         <p class="font-heading font-bold text-white text-sm">Rumah Khitan Kak Topa</p>
@@ -1514,6 +1516,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="config.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@
 // ============================================
 // BRANCH DATA CONFIGURATION
 // ============================================
-const branchData = {
+const branchData = (typeof CONFIG !== 'undefined' && CONFIG.branches) ? CONFIG.branches : {
     bandung: {
         name: 'Cabang Bandung',
         'clinic-location': 'Klinik Khitan Modern di Bandung Barat',
@@ -87,13 +87,55 @@ function applyBranchData(branch) {
     const data = branchData[branch];
     if (!data) return;
 
-    // Update all elements with data-branch-text attribute
+    // 1. Update text elements
     document.querySelectorAll('[data-branch-text]').forEach(el => {
         const key = el.getAttribute('data-branch-text');
         if (data[key]) {
             el.textContent = data[key];
         }
     });
+
+    // 2. Update image elements
+    document.querySelectorAll('[data-branch-img]').forEach(el => {
+        const key = el.getAttribute('data-branch-img');
+        if (data[key]) {
+            el.setAttribute('src', data[key]);
+        }
+    });
+
+    // 3. Update link elements (href)
+    document.querySelectorAll('[data-branch-link]').forEach(el => {
+        const key = el.getAttribute('data-branch-link');
+        if (data[key]) {
+            el.setAttribute('href', data[key]);
+        }
+    });
+
+    // 4. Update Google Maps Embed Iframe
+    const mapIframe = document.getElementById('map-iframe');
+    if (mapIframe && data.googleMapsEmbedUrl) {
+        mapIframe.setAttribute('src', data.googleMapsEmbedUrl);
+    }
+
+    // 5. Dynamic WhatsApp Link Number Replacement
+    if (data.whatsappNumber) {
+        document.querySelectorAll('a[href*="wa.me"]').forEach(a => {
+            let href = a.getAttribute('href');
+            if (href) {
+                // Replace phone number in wa.me/NUMBER or phone=NUMBER
+                href = href.replace(/wa\.me\/[0-9]+/, `wa.me/${data.whatsappNumber}`);
+                href = href.replace(/phone=[0-9]+/, `phone=${data.whatsappNumber}`);
+                a.setAttribute('href', href);
+            }
+        });
+    }
+
+    // 6. Dynamic Telephone Link Number Replacement
+    if (data.whatsappNumber) {
+        document.querySelectorAll('a[href^="tel:"]').forEach(a => {
+            a.setAttribute('href', `tel:+${data.whatsappNumber}`);
+        });
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
