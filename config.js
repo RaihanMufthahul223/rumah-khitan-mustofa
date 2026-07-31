@@ -19,7 +19,7 @@ const CONFIG = {
             address: 'Bandung Barat, Jawa Barat',
             'phone-display': '0851-9604-9990',
             whatsappNumber: '6285196049990', // Format WhatsApp internasional
-            photoUrl: 'assets/images/clinic-bandung.jpp',
+            photoUrl: 'assets/images/clinic-bandung.jpg',
             googleMapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.0377!2d107.5184!3d-6.8397!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e33e8f152829%3A0x51c0fcb8c61b4975!2sRumah+Khitan+Kak Topa!5e0!3m2!1sid!2sid!4v1',
             googleMapsUrl: 'https://maps.google.com/?cid=5890986183128467829'
         },

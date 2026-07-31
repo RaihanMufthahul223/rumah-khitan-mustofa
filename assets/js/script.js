@@ -40,20 +40,30 @@ function selectBranch(branch) {
     // Remove overlay from DOM after animation
     setTimeout(() => {
         overlay.style.display = 'none';
+        overlay.classList.add('hidden');
         document.body.style.overflow = '';
+        
+        if (window.pendingReservation) {
+            // Open WA for the selected branch
+            const data = branchData[branch];
+            if (data && data.whatsappNumber) {
+                window.open(`https://wa.me/${data.whatsappNumber}?text=Halo%20Rumah%20Khitan%20Mustopa%2C%20saya%20ingin%20mendaftar%20khitan`, '_blank');
+            }
+            window.pendingReservation = false;
+        }
     }, 600);
 }
 
-function switchBranch() {
+function showBranchSelector(isReservation = false) {
     const overlay = document.getElementById('branch-overlay');
     if (!overlay) return;
 
-    // Clear saved selection
-    sessionStorage.removeItem('selectedBranch');
+    window.pendingReservation = isReservation;
 
     // Reset overlay animation classes
     overlay.classList.remove('branch-exit');
     overlay.style.display = '';
+    overlay.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
 
     // Close mobile menu if open
@@ -67,9 +77,24 @@ function switchBranch() {
         if (iconClose) iconClose.classList.add('hidden');
         if (menuLabel) menuLabel.textContent = 'Menu';
     }
+}
 
-    // Scroll to top
-    window.scrollTo({ top: 0 });
+function closeBranchSelector() {
+    const overlay = document.getElementById('branch-overlay');
+    if (!overlay) return;
+    
+    window.pendingReservation = false;
+    overlay.classList.add('branch-exit');
+    
+    setTimeout(() => {
+        overlay.style.display = 'none';
+        overlay.classList.add('hidden');
+        document.body.style.overflow = '';
+    }, 600);
+}
+
+function switchBranch() {
+    showBranchSelector(false);
 }
 
 function updateBranchLabels(branch) {
@@ -155,14 +180,17 @@ function initBranchSelector() {
     const overlay = document.getElementById('branch-overlay');
     const savedBranch = sessionStorage.getItem('selectedBranch');
 
-    if (savedBranch && overlay) {
-        // Branch already selected, skip overlay
+    if (overlay) {
         overlay.style.display = 'none';
+        overlay.classList.add('hidden');
+    }
+
+    if (savedBranch) {
         applyBranchData(savedBranch);
         updateBranchLabels(savedBranch);
-    } else if (overlay) {
-        // Show overlay and prevent scrolling
-        document.body.style.overflow = 'hidden';
+    } else {
+        // Apply default data so it doesn't look empty
+        applyBranchData('bandung');
     }
 }
 
