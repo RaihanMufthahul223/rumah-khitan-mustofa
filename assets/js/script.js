@@ -1,198 +1,114 @@
 // ============================================
-// RUMAH KHITAN MUSTOPA - Main JavaScript
+// RUMAH KHITAN KAK TOPA - Main JavaScript
 // ============================================
 
 // ============================================
-// BRANCH DATA CONFIGURATION
+// RESERVASI MODAL
 // ============================================
-const branchData = (typeof CONFIG !== 'undefined' && CONFIG.branches) ? CONFIG.branches : {
-    bandung: {
-        name: 'Cabang Bandung',
-        'clinic-location': 'Klinik Khitan Modern di Bandung Barat',
-        'address': 'Bandung Barat, Jawa Barat',
-    },
-    garut: {
-        name: 'Cabang Garut',
-        'clinic-location': 'Klinik Khitan Modern di Garut',
-        'address': 'Garut, Jawa Barat',
+function openReservasiModal(packageName) {
+    const modal = document.getElementById('reservasi-modal');
+    const panel = document.getElementById('reservasi-modal-panel');
+    if (!modal || !panel) return;
+
+    // Reset form
+    const form = document.getElementById('booking-form');
+    if (form) form.reset();
+
+    // Pre-select package if given
+    if (packageName) {
+        const pkg = document.getElementById('modal-package');
+        if (pkg) pkg.value = packageName;
     }
-};
 
-// ============================================
-// BRANCH SELECTION FUNCTION (global scope)
-// ============================================
-function selectBranch(branch) {
-    const overlay = document.getElementById('branch-overlay');
-    if (!overlay) return;
-
-    // Store selection
-    sessionStorage.setItem('selectedBranch', branch);
-
-    // Apply branch-specific text
-    applyBranchData(branch);
-
-    // Update branch labels in navbar
-    updateBranchLabels(branch);
-
-    // Animate out the overlay
-    overlay.classList.add('branch-exit');
-
-    // Remove overlay from DOM after animation
-    setTimeout(() => {
-        overlay.style.display = 'none';
-        overlay.classList.add('hidden');
-        document.body.style.overflow = '';
-        
-        if (window.pendingReservation) {
-            // Open WA for the selected branch
-            const data = branchData[branch];
-            if (data && data.whatsappNumber) {
-                window.open(`https://wa.me/${data.whatsappNumber}?text=Halo%20Rumah%20Khitan%20Mustopa%2C%20saya%20ingin%20mendaftar%20khitan`, '_blank');
-            }
-            window.pendingReservation = false;
-        }
-    }, 600);
-}
-
-function showBranchSelector(isReservation = false) {
-    const overlay = document.getElementById('branch-overlay');
-    if (!overlay) return;
-
-    window.pendingReservation = isReservation;
-
-    // Reset overlay animation classes
-    overlay.classList.remove('branch-exit');
-    overlay.style.display = '';
-    overlay.classList.remove('hidden');
+    // Show modal
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
     document.body.style.overflow = 'hidden';
 
-    // Close mobile menu if open
-    const mobileMenu = document.getElementById('mobile-menu');
-    const iconOpen = document.getElementById('menu-icon-open');
-    const iconClose = document.getElementById('menu-icon-close');
-    const menuLabel = document.getElementById('menu-label');
-    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('hidden');
-        if (iconOpen) iconOpen.classList.remove('hidden');
-        if (iconClose) iconClose.classList.add('hidden');
-        if (menuLabel) menuLabel.textContent = 'Menu';
-    }
+    // Trigger animation
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            panel.classList.remove('scale-95', 'opacity-0', 'translate-y-4');
+            panel.classList.add('scale-100', 'opacity-100', 'translate-y-0');
+        });
+    });
 }
 
-function closeBranchSelector() {
-    const overlay = document.getElementById('branch-overlay');
-    if (!overlay) return;
-    
-    window.pendingReservation = false;
-    overlay.classList.add('branch-exit');
-    
+function closeReservasiModal() {
+    const modal = document.getElementById('reservasi-modal');
+    const panel = document.getElementById('reservasi-modal-panel');
+    if (!modal || !panel) return;
+
+    panel.classList.remove('scale-100', 'opacity-100', 'translate-y-0');
+    panel.classList.add('scale-95', 'opacity-0', 'translate-y-4');
+
     setTimeout(() => {
-        overlay.style.display = 'none';
-        overlay.classList.add('hidden');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
         document.body.style.overflow = '';
-    }, 600);
+    }, 300);
 }
 
-function switchBranch() {
-    showBranchSelector(false);
-}
+// ============================================
+// RESERVATION FORM HANDLER
+// ============================================
+function handleBooking(event) {
+    event.preventDefault();
 
-function updateBranchLabels(branch) {
-    const data = branchData[branch];
-    if (!data) return;
+    const form = event.target;
+    
+    // Get values
+    const branch = form.branch.value; // 'bandung' or 'garut'
+    const parentName = form.parentName.value;
+    const childName = form.childName.value;
+    const packageChoice = form.package.value;
+    const bookingDate = form.bookingDate.value;
 
-    const desktopLabel = document.getElementById('branch-label-desktop');
-    const mobileLabel = document.getElementById('branch-label-mobile');
-
-    if (desktopLabel) desktopLabel.textContent = data.name;
-    if (mobileLabel) mobileLabel.textContent = data.name + ' — Ganti';
-}
-
-function applyBranchData(branch) {
-    const data = branchData[branch];
-    if (!data) return;
-
-    // 1. Update text elements
-    document.querySelectorAll('[data-branch-text]').forEach(el => {
-        const key = el.getAttribute('data-branch-text');
-        if (data[key]) {
-            el.textContent = data[key];
-        }
-    });
-
-    // 2. Update image elements
-    document.querySelectorAll('[data-branch-img]').forEach(el => {
-        const key = el.getAttribute('data-branch-img');
-        if (data[key]) {
-            el.setAttribute('src', data[key]);
-        }
-    });
-
-    // 3. Update link elements (href)
-    document.querySelectorAll('[data-branch-link]').forEach(el => {
-        const key = el.getAttribute('data-branch-link');
-        if (data[key]) {
-            el.setAttribute('href', data[key]);
-        }
-    });
-
-    // 4. Update Google Maps Embed Iframe
-    const mapIframe = document.getElementById('map-iframe');
-    if (mapIframe && data.googleMapsEmbedUrl) {
-        mapIframe.setAttribute('src', data.googleMapsEmbedUrl);
+    // Determine WhatsApp number
+    let waNumber = '6285196049990';
+    let branchName = 'Bandung Barat';
+    if (branch === 'garut') {
+        waNumber = '6281220224867';
+        branchName = 'Garut';
     }
 
-    // 5. Dynamic WhatsApp Link Number Replacement
-    if (data.whatsappNumber) {
-        document.querySelectorAll('a[href*="wa.me"]').forEach(a => {
-            let href = a.getAttribute('href');
-            if (href) {
-                // Replace phone number in wa.me/NUMBER or phone=NUMBER
-                href = href.replace(/wa\.me\/[0-9]+/, `wa.me/${data.whatsappNumber}`);
-                href = href.replace(/phone=[0-9]+/, `phone=${data.whatsappNumber}`);
-                a.setAttribute('href', href);
-            }
+    // Format Date
+    let formattedDate = bookingDate;
+    if (bookingDate) {
+        const d = new Date(bookingDate);
+        formattedDate = d.toLocaleDateString('id-ID', {
+            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
         });
     }
 
-    // 6. Dynamic Telephone Link Number Replacement
-    if (data.whatsappNumber) {
-        document.querySelectorAll('a[href^="tel:"]').forEach(a => {
-            a.setAttribute('href', `tel:+${data.whatsappNumber}`);
-        });
-    }
+    // Construct Message
+    const text = `Halo Admin Rumah Khitan Kak Topa (Cabang ${branchName}),\n\nSaya ingin mendaftar khitan dengan detail sebagai berikut:\n\n*Data Pasien:*\n- Nama Orang Tua/Wali: ${parentName}\n- Nama & Usia Anak: ${childName}\n- Pilihan Paket: ${packageChoice}\n- Rencana Tanggal: ${formattedDate}\n\nMohon informasi lebih lanjut mengenai ketersediaan jadwal. Terima kasih.`;
+
+    const encodedText = encodeURIComponent(text);
+    const waUrl = `https://wa.me/${waNumber}?text=${encodedText}`;
+
+    // Open WhatsApp
+    window.open(waUrl, '_blank');
+
+    // Close modal after sending
+    closeReservasiModal();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    initBranchSelector();
     initNavbar();
     initMobileMenu();
     initScrollAnimations();
     initFAQ();
     initCounters();
     initSmoothScroll();
+
+    // Close reservasi modal on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeReservasiModal();
+    });
 });
 
-// ============================================
-// BRANCH SELECTOR INIT
-// ============================================
-function initBranchSelector() {
-    const overlay = document.getElementById('branch-overlay');
-    const savedBranch = sessionStorage.getItem('selectedBranch');
 
-    if (overlay) {
-        overlay.style.display = 'none';
-        overlay.classList.add('hidden');
-    }
-
-    if (savedBranch) {
-        applyBranchData(savedBranch);
-        updateBranchLabels(savedBranch);
-    } else {
-        // Apply default data so it doesn't look empty
-        applyBranchData('bandung');
-    }
-}
 
 // ============================================
 // NAVBAR SCROLL BEHAVIOR
@@ -246,12 +162,12 @@ function initMobileMenu() {
         mobileMenu.classList.toggle('hidden', !isOpen);
         iconOpen.classList.toggle('hidden', isOpen);
         iconClose.classList.toggle('hidden', !isOpen);
-        
+
         // Toggle label text for older users
         if (menuLabel) {
             menuLabel.textContent = isOpen ? 'Tutup' : 'Menu';
         }
-        
+
         // Prevent body scroll when menu is open
         document.body.style.overflow = isOpen ? 'hidden' : '';
     }
@@ -411,11 +327,11 @@ function initSmoothScroll() {
 
             e.preventDefault();
             const target = document.querySelector(href);
-            
+
             if (target) {
                 const navbarHeight = document.getElementById('navbar').offsetHeight;
                 const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
-                
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
