@@ -109,6 +109,40 @@
 <body class="font-body text-gray-800 bg-white overflow-x-hidden">
 
     <!-- ============================================ -->
+    <!-- PRELOADER -->
+    <!-- ============================================ -->
+    <div id="preloader" class="fixed inset-0 z-[999] bg-white flex flex-col items-center justify-center transition-all duration-700 ease-in-out">
+        <div class="relative flex items-center justify-center mb-6">
+            <!-- Ripple Effect -->
+            <div class="absolute w-24 h-24 bg-primary-100 rounded-full animate-[ping_1.5s_cubic-bezier(0,0,0.2,1)_infinite] opacity-75"></div>
+            <!-- Icon -->
+            <div class="relative w-16 h-16 bg-primary-50 rounded-2xl flex items-center justify-center shadow-xl shadow-primary-500/20 animate-bounce border border-primary-100">
+                <svg class="w-8 h-8 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+            </div>
+        </div>
+        <h2 class="font-heading font-extrabold text-xl text-primary-600 tracking-wide animate-pulse">Rumah Khitan Kak Topa</h2>
+        <p class="text-sm text-gray-500 mt-2 font-medium">Menyiapkan layanan terbaik...</p>
+    </div>
+
+    <script>
+        // Sembunyikan preloader setelah halaman termuat
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    // Transisi fade out & slide up
+                    preloader.classList.add('opacity-0', '-translate-y-8');
+                    preloader.classList.remove('bg-white');
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 700);
+                }, 600); // Minimum loading time for aesthetic
+            }
+        });
+    </script>
+    <!-- ============================================ -->
     <!-- BRANCH SELECTION OVERLAY -->
     <!-- ============================================ -->
     <!-- ============================================ -->
@@ -148,7 +182,7 @@
                         <div class="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-primary-500/0 to-primary-700/0 group-hover:from-primary-500/10 group-hover:to-primary-700/5 transition-all duration-500 z-10"></div>
                         <!-- Clinic Photo -->
                         <div class="relative w-full shrink-0 aspect-[21/9] sm:aspect-[16/10] overflow-hidden">
-                            <img src="assets/images/clinic-bandung.jpg" alt="Klinik Rumah Khitan Kak Topa Bandung" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <img src="assets/images/clinic-bandung.webp" alt="Klinik Rumah Khitan Kak Topa Bandung" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
                         </div>
                         <div class="relative p-4 sm:p-6 md:p-7 flex flex-col justify-between flex-grow">
@@ -171,7 +205,7 @@
                         <div class="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-accent-500/0 to-accent-700/0 group-hover:from-accent-500/10 group-hover:to-accent-700/5 transition-all duration-500 z-10"></div>
                         <!-- Clinic Photo -->
                         <div class="relative w-full shrink-0 aspect-[21/9] sm:aspect-[16/10] overflow-hidden">
-                            <img src="assets/images/clinic-garut.jpg" alt="Klinik Rumah Khitan Kak Topa Garut" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                            <img src="assets/images/clinic-garut.webp" alt="Klinik Rumah Khitan Kak Topa Garut" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
                         </div>
                         <div class="relative p-4 sm:p-6 md:p-7 flex flex-col justify-between flex-grow">
@@ -201,17 +235,16 @@
     <!-- FLOATING WHATSAPP BUTTON -->
     <!-- ============================================ -->
     <!-- WhatsApp Float - ENLARGED for older users -->
-    <a href="https://wa.me/6282213085278?text=Halo%20Rumah%20Khitan%20Kak%20Topa%2C%20saya%20ingin%20konsultasi%20tentang%20khitan" 
-       target="_blank" rel="noopener noreferrer"
+    <button onclick="openReservasiModal()" 
        id="whatsapp-float"
-       class="fixed bottom-5 right-5 z-50 bg-green-500 hover:bg-green-600 text-white rounded-2xl shadow-2xl transition-all duration-300 hover:scale-105 group flex items-center gap-3 px-5 py-4 md:px-6 md:py-4"
-       aria-label="Chat via WhatsApp">
+       class="fixed bottom-5 right-5 z-50 bg-green-500 hover:bg-green-600 text-white rounded-2xl shadow-2xl transition-all duration-300 hover:scale-105 group flex items-center gap-3 px-5 py-4 md:px-6 md:py-4 cursor-pointer"
+       aria-label="Buka Formulir Pendaftaran">
         <svg class="w-8 h-8 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
         <span class="font-bold text-base hidden sm:inline">Chat WhatsApp</span>
         <span class="font-bold text-base sm:hidden">Chat</span>
-    </a>
+    </button>
 
     <!-- ============================================ -->
     <!-- NAVBAR -->
@@ -401,7 +434,7 @@
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
+        <div class="absolute bottom-8 left-0 right-0 w-full flex flex-col items-center justify-center gap-2 animate-bounce pointer-events-none">
             <span class="text-white/50 text-xs font-medium tracking-widest uppercase">Scroll</span>
             <svg class="w-5 h-5 text-white/50" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3"/>
@@ -420,27 +453,57 @@
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                 <!-- Left: Image/Visual (Carousel) -->
                 <div class="animate-on-scroll relative">
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl group max-w-sm md:max-w-md lg:max-w-sm xl:max-w-md mx-auto lg:mx-0 lg:ml-auto">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl group w-full max-w-[380px] sm:max-w-[480px] lg:max-w-[500px] xl:max-w-[560px] mx-auto lg:mx-0 lg:ml-auto aspect-square">
                         <!-- Carousel Container -->
-                        <div class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" id="about-carousel" onscroll="updateCarouselIndicators()">
-                            <!-- Slide 1: Bandung -->
-                            <div class="min-w-full flex-none snap-center relative aspect-[4/3]">
-                                <img src="assets/images/clinic-bandung.jpg" alt="Klinik Rumah Khitan Kak Topa Bandung" class="w-full h-full object-cover">
+                        <div class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth h-full w-full [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" id="about-carousel" onscroll="updateCarouselIndicators()">
+                            <!-- Slide 1 -->
+                            <div class="min-w-full h-full flex-none snap-center relative">
+                                <img src="assets/images/1.webp" alt="Fasilitas Modern" class="w-full h-full object-cover object-center">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                                 <div class="absolute bottom-6 left-6 right-8 pr-12 text-white text-left">
-                                    <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-bold rounded-full mb-2 shadow-lg shadow-primary-500/30">Cabang Bandung</span>
+                                    <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-bold rounded-full mb-2 shadow-lg shadow-primary-500/30">Klinik Kami</span>
                                     <h3 class="font-heading font-bold text-2xl text-white drop-shadow-md">Rumah Khitan Kak Topa</h3>
-                                    <p class="text-gray-200 text-sm sm:text-base drop-shadow-md">Klinik Khitan Modern di Bandung Barat</p>
+                                    <p class="text-gray-200 text-sm sm:text-base drop-shadow-md">Klinik khitan modern pilihan keluarga.</p>
                                 </div>
                             </div>
-                            <!-- Slide 2: Garut -->
-                            <div class="min-w-full flex-none snap-center relative aspect-[4/3]">
-                                <img src="assets/images/clinic-garut.jpg" alt="Klinik Rumah Khitan Kak Topa Garut" class="w-full h-full object-cover">
+                            <!-- Slide 2 -->
+                            <div class="min-w-full h-full flex-none snap-center relative">
+                                <img src="assets/images/2.webp" alt="Dokter Profesional" class="w-full h-full object-cover object-center">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                                 <div class="absolute bottom-6 left-6 right-8 pr-12 text-white text-left">
-                                    <span class="inline-block px-3 py-1 bg-accent-500 text-white text-xs font-bold rounded-full mb-2 shadow-lg shadow-accent-500/30">Cabang Garut</span>
-                                    <h3 class="font-heading font-bold text-2xl text-white drop-shadow-md">Rumah Khitan Kak Topa</h3>
-                                    <p class="text-gray-200 text-sm sm:text-base drop-shadow-md">Klinik Khitan Modern di Garut</p>
+                                    <span class="inline-block px-3 py-1 bg-accent-500 text-white text-xs font-bold rounded-full mb-2 shadow-lg shadow-accent-500/30">Fasilitas</span>
+                                    <h3 class="font-heading font-bold text-2xl text-white drop-shadow-md">Fasilitas Lengkap &amp; Nyaman</h3>
+                                    <p class="text-gray-200 text-sm sm:text-base drop-shadow-md">Dilengkapi ruang tindakan dan peralatan medis modern yang higienis.</p>
+                                </div>
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="min-w-full h-full flex-none snap-center relative">
+                                <img src="assets/images/3.webp" alt="Pelayanan Nyaman" class="w-full h-full object-cover object-center">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                                <div class="absolute bottom-6 left-6 right-8 pr-12 text-white text-left">
+                                    <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-bold rounded-full mb-2 shadow-lg shadow-primary-500/30">Tenaga Medis</span>
+                                    <h3 class="font-heading font-bold text-2xl text-white drop-shadow-md">Edukasi &amp; Dokter Ahli</h3>
+                                    <p class="text-gray-200 text-sm sm:text-base drop-shadow-md">Ditangani dokter berpengalaman dengan edukasi perawatan pasca-khitan yang jelas.</p>
+                                </div>
+                            </div>
+                            <!-- Slide 4 -->
+                            <div class="min-w-full h-full flex-none snap-center relative">
+                                <img src="assets/images/4.webp" alt="Metode Khitan Terbaik" class="w-full h-full object-cover object-center">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                                <div class="absolute bottom-6 left-6 right-8 pr-12 text-white text-left">
+                                    <span class="inline-block px-3 py-1 bg-accent-500 text-white text-xs font-bold rounded-full mb-2 shadow-lg shadow-accent-500/30">Kepuasan</span>
+                                    <h3 class="font-heading font-bold text-2xl text-white drop-shadow-md">Senyum Keluarga</h3>
+                                    <p class="text-gray-200 text-sm sm:text-base drop-shadow-md">Momen lega &amp; bahagia keluarga pasien setelah proses khitan selesai lancar.</p>
+                                </div>
+                            </div>
+                            <!-- Slide 5 -->
+                            <div class="min-w-full h-full flex-none snap-center relative">
+                                <img src="assets/images/5.webp" alt="Pelayanan Maksimal" class="w-full h-full object-cover object-center">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                                <div class="absolute bottom-6 left-6 right-8 pr-12 text-white text-left">
+                                    <span class="inline-block px-3 py-1 bg-primary-500 text-white text-xs font-bold rounded-full mb-2 shadow-lg shadow-primary-500/30">Metode Khitan</span>
+                                    <h3 class="font-heading font-bold text-2xl text-white drop-shadow-md">Nyaman &amp; Tanpa Takut</h3>
+                                    <p class="text-gray-200 text-sm sm:text-base drop-shadow-md">Menggunakan pilihan metode modern terbaik agar anak bisa lekas beraktivitas.</p>
                                 </div>
                             </div>
                         </div>
@@ -455,8 +518,11 @@
                         
                         <!-- Carousel Indicators -->
                         <div class="absolute bottom-6 right-6 flex gap-2 z-10">
-                            <div class="carousel-dot w-2 h-2 rounded-full bg-white transition-all" data-index="0"></div>
+                            <div class="carousel-dot w-5 h-2 rounded-full bg-white transition-all" data-index="0"></div>
                             <div class="carousel-dot w-2 h-2 rounded-full bg-white/40 transition-all" data-index="1"></div>
+                            <div class="carousel-dot w-2 h-2 rounded-full bg-white/40 transition-all" data-index="2"></div>
+                            <div class="carousel-dot w-2 h-2 rounded-full bg-white/40 transition-all" data-index="3"></div>
+                            <div class="carousel-dot w-2 h-2 rounded-full bg-white/40 transition-all" data-index="4"></div>
                         </div>
                     </div>
                 </div>
@@ -473,14 +539,35 @@
                         const dots = carousel.parentElement.querySelectorAll('.carousel-dot');
                         dots.forEach((dot, index) => {
                             if (index === activeIndex) {
-                                dot.classList.remove('bg-white/40');
-                                dot.classList.add('bg-white');
+                                dot.classList.remove('bg-white/40', 'w-2');
+                                dot.classList.add('bg-white', 'w-5');
                             } else {
-                                dot.classList.remove('bg-white');
-                                dot.classList.add('bg-white/40');
+                                dot.classList.remove('bg-white', 'w-5');
+                                dot.classList.add('bg-white/40', 'w-2');
                             }
                         });
                     }
+
+                    // Autoplay: ganti slide setiap 2 detik
+                    (function initCarouselAutoplay() {
+                        const carousel = document.getElementById('about-carousel');
+                        if (!carousel) return;
+                        const totalSlides = carousel.querySelectorAll('.snap-center').length;
+                        let currentSlide = 0;
+                        let isHovered = false;
+
+                        carousel.addEventListener('mouseenter', () => isHovered = true);
+                        carousel.addEventListener('mouseleave', () => isHovered = false);
+
+                        setInterval(() => {
+                            if (isHovered) return;
+                            currentSlide = (currentSlide + 1) % totalSlides;
+                            carousel.scrollTo({
+                                left: currentSlide * carousel.offsetWidth,
+                                behavior: 'smooth'
+                            });
+                        }, 3000);
+                    })();
                 </script>
 
                 <!-- Right: Text -->
@@ -634,7 +721,10 @@
 
                 <!-- Method 2: Combo Sealer -->
                 <div class="animate-on-scroll bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl border border-gray-100 hover:border-primary-200 transition-all duration-500 group hover:-translate-y-2 relative w-full md:w-[calc(50%-12px)] lg:w-[calc(50%-16px)] flex flex-col" style="animation-delay: 0.15s">
-                    <div class="absolute -top-3 right-6 px-4 py-1 bg-gradient-to-r from-accent-400 to-accent-500 text-dark-900 text-xs font-bold rounded-full shadow-lg">⭐ BEST SELLER</div>
+                    <div class="absolute -top-3 right-6 px-4 py-1 bg-gradient-to-r from-accent-400 to-accent-500 text-dark-900 text-xs font-bold rounded-full shadow-lg flex items-center gap-1.5">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.86 1.4-8.168L.132 9.21l8.2-1.192L12 .587z"/></svg>
+                        BEST SELLER
+                    </div>
                     <div class="w-16 h-16 bg-gradient-to-br from-accent-400 to-accent-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-accent-500/20 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/>
@@ -1597,102 +1687,121 @@
     <!-- ============================================ -->
     <!-- RESERVASI MODAL -->
     <!-- ============================================ -->
-    <div id="reservasi-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4 sm:p-6" aria-modal="true" role="dialog" aria-labelledby="modal-title">
+    <div id="reservasi-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-3 sm:p-6" aria-modal="true" role="dialog" aria-labelledby="modal-title">
         <!-- Backdrop -->
-        <div class="absolute inset-0 bg-dark-900/70 backdrop-blur-sm transition-opacity duration-300" onclick="closeReservasiModal()"></div>
+        <div class="absolute inset-0 bg-dark-900/60 backdrop-blur-sm transition-opacity duration-300" onclick="closeReservasiModal()"></div>
 
         <!-- Modal Panel -->
-        <div id="reservasi-modal-panel" class="relative bg-white rounded-3xl shadow-2xl w-full max-w-xl max-h-[95vh] overflow-y-auto transform scale-95 opacity-0 translate-y-4 transition-all duration-300 z-10 border-2 border-primary-100">
+        <div id="reservasi-modal-panel" class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[95vh] overflow-y-auto transform scale-95 opacity-0 translate-y-4 transition-all duration-300 z-10">
+            
             <!-- Header -->
-            <div class="sticky top-0 bg-white border-b-2 border-gray-100 px-6 py-5 rounded-t-3xl flex items-center justify-between z-20 shadow-sm">
-                <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-2xl bg-primary-50 flex items-center justify-center text-primary-600 shadow-inner">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/>
-                        </svg>
-                    </div>
-                    <div>
-                        <h2 id="modal-title" class="font-heading font-extrabold text-xl sm:text-2xl text-gray-900 leading-tight">Formulir Pendaftaran</h2>
-                        <p class="text-primary-600 font-medium text-sm sm:text-base mt-0.5">Silakan isi data di bawah ini dengan jelas</p>
-                    </div>
+            <div class="sticky top-0 bg-primary-600 px-6 py-5 rounded-t-2xl flex items-center justify-between z-20">
+                <div>
+                    <h2 id="modal-title" class="font-heading font-bold text-xl sm:text-2xl text-white leading-tight flex items-center">
+                        <svg class="w-6 h-6 sm:w-7 sm:h-7 mr-2 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                        Formulir Pendaftaran
+                    </h2>
+                    <p class="text-primary-100 text-sm sm:text-base mt-0.5">Isi data berikut, lalu kirim via WhatsApp</p>
                 </div>
-                <button onclick="closeReservasiModal()" class="flex-shrink-0 flex items-center justify-center gap-1.5 px-3 py-2 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl transition-all cursor-pointer font-bold border border-red-100 hover:border-red-200" aria-label="Tutup">
-                    <span class="hidden sm:inline text-sm">Tutup</span>
-                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                <button onclick="closeReservasiModal()" class="flex-shrink-0 w-10 h-10 bg-white/20 hover:bg-white/40 text-white rounded-xl transition-all cursor-pointer flex items-center justify-center" aria-label="Tutup">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
             </div>
 
             <!-- Form Body -->
-            <div class="p-6 sm:p-8 bg-gray-50/50">
-                <form id="booking-form" onsubmit="handleBooking(event)" class="space-y-6 sm:space-y-8">
+            <div class="p-5 sm:p-7">
+                <form id="booking-form" onsubmit="handleBooking(event)" class="space-y-5">
+
                     <!-- Branch Selection -->
-                    <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
-                        <label class="block text-gray-900 font-extrabold mb-3.5 text-base sm:text-lg">Lokasi Cabang <span class="text-red-500">*</span></label>
-                        <div class="grid grid-cols-2 gap-4">
-                            <label class="cursor-pointer">
+                    <div>
+                        <label class="flex items-center text-gray-800 font-bold mb-3 text-lg">
+                            <svg class="w-5 h-5 mr-1.5 text-primary-600 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Pilih Cabang <span class="text-red-500 ml-1">*</span>
+                        </label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="cursor-pointer group">
                                 <input type="radio" name="branch" value="bandung" class="peer sr-only" required checked>
-                                <div class="rounded-xl border-2 border-gray-200 p-4 hover:bg-gray-50 peer-checked:border-primary-600 peer-checked:bg-primary-50 peer-checked:shadow-md transition-all text-center h-full flex flex-col justify-center">
-                                    <span class="block text-3xl sm:text-4xl mb-2">🏥</span>
-                                    <div class="font-bold text-base sm:text-lg text-gray-600 peer-checked:text-primary-700">Bandung Barat</div>
+                                <div class="rounded-xl border-2 border-gray-200 py-4 px-3 peer-checked:border-primary-600 peer-checked:bg-primary-50 transition-all text-center">
+                                    <span class="block mb-2 flex justify-center text-gray-400 group-hover:text-primary-500 peer-checked:text-primary-600 transition-colors">
+                                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    </span>
+                                    <div class="font-bold text-base text-gray-700 peer-checked:text-primary-700">Bandung Barat</div>
                                 </div>
                             </label>
-                            <label class="cursor-pointer">
+                            <label class="cursor-pointer group">
                                 <input type="radio" name="branch" value="garut" class="peer sr-only">
-                                <div class="rounded-xl border-2 border-gray-200 p-4 hover:bg-gray-50 peer-checked:border-accent-500 peer-checked:bg-accent-50 peer-checked:shadow-md transition-all text-center h-full flex flex-col justify-center">
-                                    <span class="block text-3xl sm:text-4xl mb-2">🏥</span>
-                                    <div class="font-bold text-base sm:text-lg text-gray-600 peer-checked:text-accent-700">Garut</div>
+                                <div class="rounded-xl border-2 border-gray-200 py-4 px-3 peer-checked:border-accent-500 peer-checked:bg-accent-50 transition-all text-center">
+                                    <span class="block mb-2 flex justify-center text-gray-400 group-hover:text-accent-500 peer-checked:text-accent-600 transition-colors">
+                                        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                    </span>
+                                    <div class="font-bold text-base text-gray-700 peer-checked:text-accent-700">Garut</div>
                                 </div>
                             </label>
                         </div>
                     </div>
 
-                    <!-- Input Fields Wrapper -->
-                    <div class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm space-y-6">
-                        <!-- Parent Name -->
-                        <div>
-                            <label for="parentName" class="block text-gray-900 font-extrabold mb-2 text-base sm:text-lg">Nama Orang Tua / Wali <span class="text-red-500">*</span></label>
-                            <input type="text" id="parentName" name="parentName" required
-                                class="w-full px-5 py-4 rounded-xl border-2 border-gray-300 focus:ring-4 focus:ring-primary-500/20 focus:border-primary-600 outline-none transition-all text-gray-900 text-base sm:text-lg placeholder-gray-400 font-medium"
-                                placeholder="Contoh: Bpk. Budi">
-                        </div>
+                    <!-- Divider -->
+                    <hr class="border-gray-200">
 
-                        <!-- Child Name & Age -->
-                        <div>
-                            <label for="childName" class="block text-gray-900 font-extrabold mb-2 text-base sm:text-lg">Nama & Usia Anak <span class="text-red-500">*</span></label>
-                            <input type="text" id="childName" name="childName" required
-                                class="w-full px-5 py-4 rounded-xl border-2 border-gray-300 focus:ring-4 focus:ring-primary-500/20 focus:border-primary-600 outline-none transition-all text-gray-900 text-base sm:text-lg placeholder-gray-400 font-medium"
-                                placeholder="Contoh: Daffa (8 Tahun)">
-                        </div>
+                    <!-- Parent Name -->
+                    <div>
+                        <label for="parentName" class="flex items-center text-gray-800 font-bold mb-2 text-lg">
+                            <svg class="w-5 h-5 mr-1.5 text-primary-600 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                            Nama Orang Tua / Wali <span class="text-red-500 ml-1">*</span>
+                        </label>
+                        <input type="text" id="parentName" name="parentName" required
+                            class="w-full px-4 py-3.5 rounded-xl border-2 border-gray-300 focus:ring-2 focus:ring-primary-400 focus:border-primary-500 outline-none transition-all text-gray-900 text-lg placeholder-gray-400"
+                            placeholder="Contoh: Bpk. Budi Santoso">
+                    </div>
 
-                        <!-- Package -->
-                        <div>
-                            <label for="modal-package" class="block text-gray-900 font-extrabold mb-2 text-base sm:text-lg">Pilihan Paket Khitan <span class="text-red-500">*</span></label>
-                            <select id="modal-package" name="package" required
-                                class="w-full px-5 py-4 rounded-xl border-2 border-gray-300 focus:ring-4 focus:ring-primary-500/20 focus:border-primary-600 outline-none transition-all text-gray-900 text-base sm:text-lg bg-white font-medium cursor-pointer">
-                                <option value="" disabled selected>-- Pilih Paket Khitan --</option>
-                                <option value="Bronze">Paket Bronze</option>
-                                <option value="Gold">Paket Gold ⭐</option>
-                                <option value="Platinum">Paket Platinum</option>
-                                <option value="VIP">Paket VIP</option>
-                                <option value="Dewasa Modern">Paket Dewasa Modern</option>
-                            </select>
-                        </div>
+                    <!-- Child Name & Age -->
+                    <div>
+                        <label for="childName" class="flex items-center text-gray-800 font-bold mb-2 text-lg">
+                            <svg class="w-5 h-5 mr-1.5 text-primary-600 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            Nama &amp; Usia Anak <span class="text-red-500 ml-1">*</span>
+                        </label>
+                        <input type="text" id="childName" name="childName" required
+                            class="w-full px-4 py-3.5 rounded-xl border-2 border-gray-300 focus:ring-2 focus:ring-primary-400 focus:border-primary-500 outline-none transition-all text-gray-900 text-lg placeholder-gray-400"
+                            placeholder="Contoh: Daffa, 8 Tahun">
+                    </div>
 
-                        <!-- Date -->
-                        <div>
-                            <label for="bookingDate" class="block text-gray-900 font-extrabold mb-2 text-base sm:text-lg">Rencana Tanggal Khitan <span class="text-red-500">*</span></label>
-                            <input type="date" id="bookingDate" name="bookingDate" required
-                                class="w-full px-5 py-4 rounded-xl border-2 border-gray-300 focus:ring-4 focus:ring-primary-500/20 focus:border-primary-600 outline-none transition-all text-gray-900 text-base sm:text-lg font-medium cursor-pointer">
-                        </div>
+                    <!-- Package -->
+                    <div>
+                        <label for="modal-package" class="flex items-center text-gray-800 font-bold mb-2 text-lg">
+                            <svg class="w-5 h-5 mr-1.5 text-primary-600 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                            Pilihan Paket <span class="text-red-500 ml-1">*</span>
+                        </label>
+                        <select id="modal-package" name="package" required
+                            class="w-full px-4 py-3.5 rounded-xl border-2 border-gray-300 focus:ring-2 focus:ring-primary-400 focus:border-primary-500 outline-none transition-all text-gray-900 text-lg bg-white cursor-pointer">
+                            <option value="" disabled selected>-- Pilih Paket --</option>
+                            <option value="Bronze">Paket Bronze</option>
+                            <option value="Gold">Paket Gold (Bestseller)</option>
+                            <option value="Platinum">Paket Platinum</option>
+                            <option value="VIP">Paket VIP</option>
+                            <option value="Dewasa Modern">Paket Dewasa Modern</option>
+                        </select>
+                    </div>
+
+                    <!-- Date -->
+                    <div>
+                        <label for="bookingDate" class="flex items-center text-gray-800 font-bold mb-2 text-lg">
+                            <svg class="w-5 h-5 mr-1.5 text-primary-600 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            Rencana Tanggal Khitan <span class="text-red-500 ml-1">*</span>
+                        </label>
+                        <input type="date" id="bookingDate" name="bookingDate" required
+                            class="w-full px-4 py-3.5 rounded-xl border-2 border-gray-300 focus:ring-2 focus:ring-primary-400 focus:border-primary-500 outline-none transition-all text-gray-900 text-lg cursor-pointer">
                     </div>
 
                     <!-- Submit -->
                     <div class="pt-2">
-                        <button type="submit" class="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-extrabold py-4 sm:py-5 px-6 rounded-2xl shadow-xl shadow-[#25D366]/30 hover:shadow-[#128C7E]/40 transition-all duration-300 flex items-center justify-center gap-3 text-lg sm:text-xl hover:-translate-y-1 cursor-pointer border-2 border-transparent hover:border-white/20">
-                            <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                            Kirim Formulir ke WhatsApp
+                        <button type="submit" class="w-full bg-[#25D366] hover:bg-[#1aab55] active:bg-[#128C7E] text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all duration-200 flex items-center justify-center gap-3 text-xl cursor-pointer">
+                            <svg class="w-7 h-7 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Kirim via WhatsApp
                         </button>
-                        <p class="text-center text-sm sm:text-base text-gray-500 mt-4 font-medium">Tim kami akan segera merespon pesan Anda.</p>
+                        <p class="text-center text-base text-gray-500 mt-3 flex items-center justify-center gap-1.5">
+                            Tim kami akan segera membalas pesan Anda 
+                            <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </p>
                     </div>
                 </form>
             </div>
